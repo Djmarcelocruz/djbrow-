@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Brow | Open Format Professional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; }
+        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.6), #050505), url('https://images.unsplash.com/photo-1571266028243-e4733b0f0bb1?q=80&w=2070') center/cover; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .gold-text { color: #D4AF37; }
+    </style>
+</head>
+<body>
+
+    <section class="h-screen flex items-center justify-center text-center hero-gradient px-4">
+        <div>
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-4">DJ <span class="gold-text">BROW</span></h1>
+            <p class="text-xl md:text-2xl font-light tracking-widest uppercase mb-8">Open Format Experience</p>
+            <a href="#contato" class="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-gold-text transition-all uppercase tracking-widest">Contratar Show</a>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="glass p-8 rounded-2xl">
+                <h2 class="text-3xl font-bold mb-6 gold-text">A Experiência</h2>
+                <div id="bio-text" class="text-gray-300 leading-relaxed">
+                    Elevando o nível do seu evento com uma mistura eclética de ritmos. Do Mainstream ao Underground, o set é moldado para a pista.
+                </div>
+            </div>
+            <div class="aspect-video glass rounded-2xl overflow-hidden">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/SUA_ID_AQUI" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-zinc-950">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold">Live Moments</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+            <div class="h-64 bg-zinc-900 rounded-lg overflow-hidden glass"></div>
+            <div class="h-64 bg-zinc-900 rounded-lg overflow-hidden glass"></div>
+            <div class="h-64 bg-zinc-900 rounded-lg overflow-hidden glass"></div>
+            <div class="h-64 bg-zinc-900 rounded-lg overflow-hidden glass"></div>
+        </div>
+    </section>
+
+    <footer id="contato" class="py-10 text-center border-t border-zinc-800">
+        <div class="flex justify-center gap-6 mb-6 text-2xl">
+            <a href="#" class="hover:text-amber-500"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-amber-500"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="hover:text-amber-500"><i class="fab fa-soundcloud"></i></a>
+        </div>
+        <p class="text-zinc-500 text-sm">© 2026 DJ BROW. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</body>
+</html>
