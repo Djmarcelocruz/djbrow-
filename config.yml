@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images" # Onde as fotos que você subir vão ficar
+public_folder: "/images"
+
+collections:
+  - name: "conteudo"
+    label: "Conteúdo do Site"
+    files:
+      - file: "index.html"
+        label: "Página Principal"
+        name: "home"
+        fields:
+          - {label: "Nome Artístico", name: "titulo", widget: "string"}
+          - {label: "Biografia", name: "bio", widget: "markdown"}
+          - {label: "Link do Vídeo YouTube", name: "video_url", widget: "string"}
+          - {label: "Foto de Capa", name: "hero_image", widget: "image"}
