@@ -1,0 +1,17 @@
+{
+  "name": "O Pacto de Prazer — Edição Pro",
+  "short_name": "Pacto Prazer",
+  "description": "Jogo de desafios interativo e personalizado",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0a0508",
+  "theme_color": "#ff2a6d",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1068/1068728.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
