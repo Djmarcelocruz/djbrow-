@@ -1,0 +1,32 @@
+/* Estilo Adicional para o Cronômetro na TV */
+.timer-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid var(--accent-primary);
+}
+.timer-display {
+    font-family: 'Cinzel', serif;
+    font-size: 6rem;
+    color: var(--accent-primary);
+    text-shadow: 0 0 20px var(--accent-glow);
+    font-variant-numeric: tabular-nums;
+}
+.timer-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+.timer-btn {
+    background: transparent;
+    border: 2px solid var(--accent-primary);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.timer-btn:hover { background: var(--accent-primary); }
