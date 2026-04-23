@@ -1,53 +1,31 @@
-let countdown;
+let timerInterval;
 let timeLeft = 0;
-let initialSeconds = 0;
-let isTimerRunning = false;
-
-// Função para disparar o cronômetro no modal de resultado
-function startChallengeTimer(seconds) {
-    clearInterval(countdown);
-    timeLeft = seconds;
-    initialSeconds = seconds;
-    isTimerRunning = true;
-    updateTimerDisplay();
-    runTimerLogic();
-}
-
-function runTimerLogic() {
-    countdown = setInterval(() => {
-        if (timeLeft <= 0) {
-            clearInterval(countdown);
-            isTimerRunning = false;
-            return;
-        }
-        timeLeft--;
-        updateTimerDisplay();
-    }, 1000);
-}
+let isPaused = true;
 
 function toggleTimer() {
     const btn = document.getElementById('btnPlayPause');
-    if (isTimerRunning) {
-        clearInterval(countdown);
-        btn.innerText = "CONTINUAR";
-    } else {
-        runTimerLogic();
+    if (isPaused) {
+        isPaused = false;
         btn.innerText = "PAUSAR";
+        timerInterval = setInterval(() => {
+            if (timeLeft > 0) {
+                timeLeft--;
+                updateTimerUI();
+            } else {
+                clearInterval(timerInterval);
+                alert("O tempo acabou!");
+            }
+        }, 1000);
+    } else {
+        isPaused = true;
+        btn.innerText = "CONTINUAR";
+        clearInterval(timerInterval);
     }
-    isTimerRunning = !isTimerRunning;
 }
 
-function resetTimer() {
-    clearInterval(countdown);
-    timeLeft = initialSeconds;
-    isTimerRunning = false;
-    document.getElementById('btnPlayPause').innerText = "PLAY";
-    updateTimerDisplay();
-}
-
-function updateTimerDisplay() {
+function updateTimerUI() {
     const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
     const s = (timeLeft % 60).toString().padStart(2, '0');
-    const el = document.getElementById('timerDisplay');
-    if (el) el.innerText = `${m}:${s}`;
+    const display = document.getElementById('timerDisplay');
+    if (display) display.innerText = `${m}:${s}`;
 }
