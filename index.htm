@@ -3,104 +3,38 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#0a0508">
-    <title>O Pacto de Prazer — Edição Pro</title>
-    
+    <title>O Pacto de Prazer</title>
     <link rel="manifest" href="manifest.json">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <div class="offline-indicator" id="offlineIndicator">
-      ⚠️ Modo Offline Ativado
-    </div>
-
     <div class="app">
-        <div class="toolbar">
-            <button class="tool-btn" onclick="openEdit()">✏️</button>
-            <button class="tool-btn" onclick="resetGame()">🔄</button>
-            <button class="tool-btn" onclick="importData()">📥</button>
-            <button class="tool-btn" onclick="exportData()">💾</button>
-        </div>
-
-        <button class="undo-btn" id="undoBtn" onclick="undoLastAction()" disabled>↩️</button>
-
         <header class="header">
-            <div class="logo">O Pacto de Prazer</div>
-            <div class="subtitle">Edição Pro — @djbroww</div>
+            <h1>O Pacto de Prazer</h1>
+            <p>Edição Profissional</p>
         </header>
 
         <div class="game-area">
-            <div class="players-bar">
-                <div class="player-card" id="cardF" onclick="selectPlayer('F')">
-                    <div class="player-header">
-                        <div class="player-avatar">👑</div>
-                        <div class="player-info"><h3>Soberana</h3><span>Feminino</span></div>
-                    </div>
-                    <div class="player-stats">
-                        <div class="stat stat-f"><span class="stat-value" id="pointsF">0</span><span class="stat-label">Glória</span></div>
-                        <div class="stat stat-f"><span class="stat-value text-gold" id="moneyF">0</span><span class="stat-label">R$</span></div>
-                    </div>
+            <div class="players">
+                <div class="card" id="cardF" onclick="selectPlayer('F')">
+                    <h3>Soberana</h3>
+                    <div class="pts" id="pointsF">0</div>
                 </div>
-
-                <div class="player-card" id="cardM" onclick="selectPlayer('M')">
-                    <div class="player-header">
-                        <div class="player-avatar">⚔️</div>
-                        <div class="player-info"><h3>Submisso</h3><span>Masculino</span></div>
-                    </div>
-                    <div class="player-stats">
-                        <div class="stat stat-m"><span class="stat-value" id="pointsM">0</span><span class="stat-label">Glória</span></div>
-                        <div class="stat stat-m"><span class="stat-value text-gold" id="moneyM">0</span><span class="stat-label">R$</span></div>
-                    </div>
+                <div class="card" id="cardM" onclick="selectPlayer('M')">
+                    <h3>Submisso</h3>
+                    <div class="pts" id="pointsM">0</div>
                 </div>
             </div>
 
-            <div class="turn-bar" id="turnBar">Vez da Soberana</div>
-
-            <div class="wheel-section">
-                <div class="wheel-container">
-                    <div class="wheel-pointer"></div>
-                    <div class="wheel" id="wheel"><div class="wheel-center">★</div></div>
-                </div>
-
-                <div class="action-section">
-                    <div class="selector-row">
-                        <button class="selector-btn" id="btnF" onclick="setSelection('F')">Soberana</button>
-                        <button class="selector-btn" id="btnM" onclick="setSelection('M')">Submisso</button>
-                    </div>
-                    <button class="spin-btn" id="spinBtn" onclick="spinWheel()" disabled>Girar Roda do Destino</button>
-                </div>
+            <div class="wheel-box">
+                <div class="wheel" id="wheel">★</div>
+                <button class="spin-btn" id="spinBtn" onclick="spinWheel()">GIRAR O DESTINO</button>
             </div>
 
-            <div class="info-panels">
-                <div class="panel" id="panelRules">
-                    <div class="panel-header" onclick="togglePanel('panelRules')">
-                        <span class="panel-title">📜 O Código do Pacto</span>
-                        <span class="panel-icon">▼</span>
-                    </div>
-                    <div class="panel-content"><div class="panel-body" id="rulesContentBody"></div></div>
-                </div>
-
-                <div class="panel" id="panelHistory">
-                    <div class="panel-header" onclick="togglePanel('panelHistory')">
-                        <span class="panel-title">📋 Crônica dos Desafios</span>
-                        <span class="panel-icon">▼</span>
-                    </div>
-                    <div class="panel-content"><div class="panel-body"><div class="history-list" id="historyList"></div></div></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="status-bar">
-            <div class="status-item"><div class="status-label">Próx. Especial</div><div class="status-value" id="nextSpecial">10 pts</div></div>
-            <div class="status-item"><div class="status-label">Restantes</div><div class="status-value" id="remainingCh">—</div></div>
-            <div class="status-item"><div class="status-label">Rodada</div><div class="status-value" id="roundCount">1</div></div>
+            <div id="challengeDisplay" class="challenge-text">Selecione quem joga e gire a roda...</div>
         </div>
     </div>
-
-    <div class="toast-container" id="toasts"></div>
-    
     <script src="script.js"></script>
 </body>
 </html>
