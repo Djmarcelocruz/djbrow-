@@ -4,37 +4,210 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>O Pacto de Prazer</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ff2a6d;
+            --gold: #d4af37;
+            --bg: #0a0508;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .players {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .player-card {
+            background: var(--card-bg);
+            border: 2px solid #333;
+            border-radius: 15px;
+            width: 45%;
+            padding: 15px 5px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .player-card.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary);
+            transform: scale(1.05);
+        }
+
+        .points {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .wheel-container {
+            position: relative;
+            margin: 30px auto;
+            width: 250px;
+            height: 250px;
+        }
+
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 8px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            background: radial-gradient(circle, #222, #000);
+            transition: transform 3s cubic-bezier(0.1, 0, 0.2, 1);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .spin-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(255, 42, 109, 0.4);
+        }
+
+        .spin-btn:active { transform: scale(0.98); }
+
+        .challenge-box {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 5px solid var(--primary);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .footer { margin-top: auto; padding: 20px; font-size: 0.8rem; opacity: 0.5; }
+    </style>
 </head>
 <body>
+
     <div class="app">
-        <header class="header">
+        <header>
             <h1>O Pacto de Prazer</h1>
-            <p>Edição Profissional</p>
+            <div id="turn-indicator">Escolha quem começa</div>
         </header>
 
-        <div class="game-area">
-            <div class="players">
-                <div class="card" id="cardF" onclick="selectPlayer('F')">
-                    <h3>Soberana</h3>
-                    <div class="pts" id="pointsF">0</div>
-                </div>
-                <div class="card" id="cardM" onclick="selectPlayer('M')">
-                    <h3>Submisso</h3>
-                    <div class="pts" id="pointsM">0</div>
-                </div>
+        <div class="players">
+            <div class="player-card" id="cardF" onclick="selectPlayer('F')">
+                <div>Soberana</div>
+                <div class="points" id="ptsF">0</div>
             </div>
-
-            <div class="wheel-box">
-                <div class="wheel" id="wheel">★</div>
-                <button class="spin-btn" id="spinBtn" onclick="spinWheel()">GIRAR O DESTINO</button>
+            <div class="player-card" id="cardM" onclick="selectPlayer('M')">
+                <div>Submisso</div>
+                <div class="points" id="ptsM">0</div>
             </div>
-
-            <div id="challengeDisplay" class="challenge-text">Selecione quem joga e gire a roda...</div>
         </div>
+
+        <div class="wheel-container">
+            <div class="wheel" id="wheel">🔥</div>
+        </div>
+
+        <button class="spin-btn" onclick="play()">GIRAR O DESTINO</button>
+
+        <div class="challenge-box" id="display">
+            O destino aguarda sua escolha...
+        </div>
+
+        <div class="footer">Edição Profissional @djbroww</div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        let currentPlayer = null;
+        let pointsF = 0;
+        let pointsM = 0;
+
+        const desafios = [
+            "Dê um beijo de 1 minuto onde seu parceiro(a) escolher.",
+            "Faça uma massagem relaxante e provocante por 3 minutos.",
+            "Sussurre um fetiche que você nunca contou antes.",
+            "Tire duas peças de roupa à sua escolha.",
+            "O parceiro(a) tem 1 minuto para fazer o que quiser com você.",
+            "Beba um gole de algo e passe para o parceiro(a) pela boca.",
+            "Fique apenas de roupas íntimas até o final da próxima rodada.",
+            "Use as mãos para explorar o corpo do outro, mas sem beijar.",
+            "Descreva detalhadamente o que quer fazer depois do jogo.",
+            "Dê uma mordida leve no pescoço ou orelha do parceiro(a)."
+        ];
+
+        function selectPlayer(p) {
+            currentPlayer = p;
+            document.querySelectorAll('.player-card').forEach(c => c.classList.remove('active'));
+            document.getElementById('card' + p).classList.add('active');
+            document.getElementById('turn-indicator').innerText = "Vez de: " + (p === 'F' ? 'Soberana' : 'Submisso');
+        }
+
+        function play() {
+            if (!currentPlayer) {
+                alert("Selecione primeiro quem vai jogar!");
+                return;
+            }
+
+            const wheel = document.getElementById('wheel');
+            const display = document.getElementById('display');
+            
+            // Giro visual
+            const rotation = Math.floor(Math.random() * 360) + 1440; 
+            wheel.style.transform = `rotate(${rotation}deg)`;
+            display.innerText = "O destino está decidindo...";
+
+            setTimeout(() => {
+                // Escolhe desafio
+                const randomDesafio = desafios[Math.floor(Math.random() * desafios.length)];
+                display.innerText = randomDesafio;
+
+                // Soma pontos
+                if (currentPlayer === 'F') {
+                    pointsF += 10;
+                    document.getElementById('ptsF').innerText = pointsF;
+                } else {
+                    pointsM += 10;
+                    document.getElementById('ptsM').innerText = pointsM;
+                }
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
