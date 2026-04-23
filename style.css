@@ -1,28 +1,21 @@
-/* Ajuste do Cronómetro para a tela de 42" */
-.timer-section {
-    margin-top: 20px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    border: 1px solid #ff2a6d;
-    text-align: center;
+:root {
+  --bg-primary: #0a0508;
+  --bg-secondary: #12090f;
+  --bg-card: #1a0f16;
+  --bg-glass: rgba(255, 255, 255, 0.03);
+  --accent-primary: #ff2a6d;
+  --accent-secondary: #ff7eb3;
+  --accent-glow: rgba(255, 42, 109, 0.4);
+  --gold-primary: #ffd700;
+  --gold-secondary: #ffed4e;
+  --gold-glow: rgba(255, 215, 0, 0.4);
+  --text-main: #e0e0e0;
+  --text-dim: #999;
 }
-.timer-display {
-    font-family: 'Cinzel', serif;
-    font-size: 6rem;
-    color: #ff2a6d;
-    text-shadow: 0 0 20px rgba(255, 42, 109, 0.6);
-    font-variant-numeric: tabular-nums;
-}
-.timer-btn {
-    background: #1a0f16;
-    border: 2px solid #ff2a6d;
-    color: white;
-    padding: 12px 35px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 5px;
-    transition: 0.3s;
-}
-.timer-btn:hover { background: #ff2a6d; box-shadow: 0 0 15px #ff2a6d; }
+
+/* Copie o resto de todo o conteúdo que estava entre as tags <style> do seu arquivo original aqui */
+/* Adicione este bloco extra para o cronômetro novo no final */
+.timer-section { margin-top: 25px; text-align: center; background: var(--bg-glass); padding: 20px; border-radius: 20px; border: 1px solid var(--accent-primary); }
+.timer-display { font-family: 'Cinzel', serif; font-size: 6rem; color: var(--accent-primary); text-shadow: 0 0 20px var(--accent-glow); }
+.timer-btn { background: var(--bg-card); border: 2px solid var(--accent-primary); color: white; padding: 12px 35px; border-radius: 50px; cursor: pointer; font-weight: bold; margin: 5px; transition: 0.3s; }
+.timer-btn:hover { background: var(--accent-primary); box-shadow: 0 0 15px var(--accent-glow); }
