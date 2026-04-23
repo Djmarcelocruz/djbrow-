@@ -1,32 +1,42 @@
-/* Estilo Adicional para o Cronômetro na TV */
+/* Mantenha todo o seu CSS original aqui e adicione isso ao final: */
+
 .timer-section {
-    margin-top: 20px;
+    margin-top: 25px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     border-radius: 15px;
     border: 1px solid var(--accent-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .timer-display {
     font-family: 'Cinzel', serif;
-    font-size: 6rem;
+    font-size: 6rem; /* Tamanho para 42 polegadas */
     color: var(--accent-primary);
     text-shadow: 0 0 20px var(--accent-glow);
     font-variant-numeric: tabular-nums;
 }
+
 .timer-controls {
     display: flex;
     gap: 15px;
-    justify-content: center;
-    margin-top: 10px;
+    margin-top: 15px;
 }
+
 .timer-btn {
-    background: transparent;
+    background: var(--bg-card);
     border: 2px solid var(--accent-primary);
     color: white;
     padding: 12px 30px;
     border-radius: 50px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
     transition: 0.3s;
 }
-.timer-btn:hover { background: var(--accent-primary); }
+
+.timer-btn:hover {
+    background: var(--accent-primary);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
