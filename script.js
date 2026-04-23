@@ -1,40 +1,53 @@
-// Lógica de Controle do Cronômetro (Play/Pausa/Reset)
-let timerInterval;
+let countdown;
 let timeLeft = 0;
-let isTimerActive = false;
+let initialSeconds = 0;
+let isTimerRunning = false;
+
+// Função para disparar o cronômetro no modal de resultado
+function startChallengeTimer(seconds) {
+    clearInterval(countdown);
+    timeLeft = seconds;
+    initialSeconds = seconds;
+    isTimerRunning = true;
+    updateTimerDisplay();
+    runTimerLogic();
+}
+
+function runTimerLogic() {
+    countdown = setInterval(() => {
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            isTimerRunning = false;
+            return;
+        }
+        timeLeft--;
+        updateTimerDisplay();
+    }, 1000);
+}
 
 function toggleTimer() {
-    const btn = document.getElementById('playPauseBtn');
-    if (isTimerActive) {
-        clearInterval(timerInterval);
-        btn.innerText = "PLAY";
+    const btn = document.getElementById('btnPlayPause');
+    if (isTimerRunning) {
+        clearInterval(countdown);
+        btn.innerText = "CONTINUAR";
     } else {
+        runTimerLogic();
         btn.innerText = "PAUSAR";
-        timerInterval = setInterval(() => {
-            if (timeLeft > 0) {
-                timeLeft--;
-                updateTimerUI();
-            } else {
-                clearInterval(timerInterval);
-                isTimerActive = false;
-                btn.innerText = "FIM";
-            }
-        }, 1000);
     }
-    isTimerActive = !isTimerActive;
+    isTimerRunning = !isTimerRunning;
 }
 
-function resetTimer(initialSeconds) {
-    clearInterval(timerInterval);
+function resetTimer() {
+    clearInterval(countdown);
     timeLeft = initialSeconds;
-    isTimerActive = false;
-    document.getElementById('playPauseBtn').innerText = "PLAY";
-    updateTimerUI();
+    isTimerRunning = false;
+    document.getElementById('btnPlayPause').innerText = "PLAY";
+    updateTimerDisplay();
 }
 
-function updateTimerUI() {
+function updateTimerDisplay() {
     const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
     const s = (timeLeft % 60).toString().padStart(2, '0');
-    const display = document.getElementById('timerDisplay');
-    if(display) display.innerText = `${m}:${s}`;
+    const el = document.getElementById('timerDisplay');
+    if (el) el.innerText = `${m}:${s}`;
 }
