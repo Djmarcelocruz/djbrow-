@@ -6,6 +6,11 @@
 <meta name="theme-color" content="#0a0508">
 <meta name="description" content="O Pacto de Prazer - Jogo de desafios para casais">
 <title>O Pacto de Prazer — Edição Pro (Corrigido)</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-512.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -2464,9 +2469,16 @@ function exportData() {
 // ==========================================
 
 function initServiceWorker() {
-  // Service Worker desativado para evitar tela branca
-  console.log('ℹ️ Service Worker desativado para compatibilidade');
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('✅ App Pronto: Service Worker registrado!'))
+        .catch(err => console.log('❌ Erro ao registrar:', err));
+    });
+  }
 }
+
+
 
 // ==========================================
 // GESTOS TOUCH
