@@ -1,6 +1,6 @@
 {
-  "name": "O Pacto de Prazer — Edição Pro",
-  "short_name": "Pacto Prazer",
+  "name": "O Pacto de Prazer",
+  "short_name": "PactoPrazer",
   "description": "Jogo de desafios para casais",
   "start_url": "./index.html",
   "display": "standalone",
