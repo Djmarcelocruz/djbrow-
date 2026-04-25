@@ -2114,7 +2114,6 @@ function declineChallenge() {
 }
 
 function startDoing() {
-function startDoing() {
   closeModal('modalChallenge');
 
   const ch = state.activeChallenge;
@@ -2147,7 +2146,7 @@ function startDoing() {
         state.timer = null;
         completeChallenge();
       }
-    }, 1000);
+        }, 1000);
   } else {
     timerSection.style.display = 'none';
   }
@@ -2155,20 +2154,8 @@ function startDoing() {
   openModal('modalDoing');
 }
 
-function updateTimerDisplay() {
-  const timerDisplay = document.getElementById('timerDisplay');
-  if (timerDisplay) {
-    const minutes = Math.floor(state.timeLeft / 60);
-    const seconds = state.timeLeft % 60;
-    timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  }
-}
 
-  
-  modal.classList.add('show');
-  addHistory(`▶ ${state.isSecret ? '[SECRETO] ' : ''}${ch.title}`);
-  hapticFeedback('success');
-}
+
 
 function updateTimerDisplay() {
   const m = Math.floor(state.timeLeft / 60);
