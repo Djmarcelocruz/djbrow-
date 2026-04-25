@@ -2119,14 +2119,12 @@ function startDoing() {
   const ch = state.activeChallenge;
   const modal = document.getElementById('modalDoing');
 
-  // Atualiza o conteúdo do modal
   document.getElementById('doBadge').textContent = ch.type === 'conquista' ? '🏆' : '🔥';
   document.getElementById('doTitle').textContent = ch.title;
   document.getElementById('doText').textContent = ch.description;
 
   const timerSection = document.getElementById('timerSection');
   
-  // Garante que não existam dois timers rodando ao mesmo tempo
   if (state.timer) {
     clearInterval(state.timer);
     state.timer = null;
@@ -2153,6 +2151,16 @@ function startDoing() {
 
   openModal('modalDoing');
 }
+
+function updateTimerDisplay() {
+  const timerDisplay = document.getElementById('timerDisplay');
+  if (timerDisplay) {
+    const minutes = Math.floor(state.timeLeft / 60);
+    const seconds = state.timeLeft % 60;
+    timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
 
 function updateTimerDisplay() {
   const timerDisplay = document.getElementById('timerDisplay');
