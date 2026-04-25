@@ -2114,17 +2114,20 @@ function declineChallenge() {
 }
 
 function startDoing() {
+function startDoing() {
   closeModal('modalChallenge');
 
   const ch = state.activeChallenge;
   const modal = document.getElementById('modalDoing');
 
-  document.getElementById('doBadge').textContent = ch.type === 'conquista' ? '🏆' : '🔥';
-  document.getElementById('doTitle').textContent = ch.title;
-  document.getElementById('doText').textContent = ch.description;
+  // Atualiza o conteúdo do modal
+  document.getElementById('doBadge').textContent = ch.badge || '';
+  document.getElementById('doTitle').textContent = ch.title || '';
+  document.getElementById('doText').textContent = ch.description || '';
 
   const timerSection = document.getElementById('timerSection');
-  
+
+  // Garante que não existam dois timers rodando
   if (state.timer) {
     clearInterval(state.timer);
     state.timer = null;
@@ -2151,16 +2154,6 @@ function startDoing() {
 
   openModal('modalDoing');
 }
-
-function updateTimerDisplay() {
-  const timerDisplay = document.getElementById('timerDisplay');
-  if (timerDisplay) {
-    const minutes = Math.floor(state.timeLeft / 60);
-    const seconds = state.timeLeft % 60;
-    timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  }
-}
-
 
 function updateTimerDisplay() {
   const timerDisplay = document.getElementById('timerDisplay');
