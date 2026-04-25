@@ -1255,8 +1255,12 @@ Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas
       <div class="timer-display" id="timerDisplay">00:00</div>
       <div class="timer-label">TEMPO RESTANTE</div>
     </div>
+    <div style="text-align: center; margin-bottom: 15px;">
+        <button class="btn btn-secondary" id="btn-play-pausa" onclick="toggleCronometro()" style="width: auto; padding: 10px 25px; border-color: var(--accent-primary);">Pausar</button>
+    </div>
     <div class="challenge-text" id="doText"></div>
-  </div>
+</div>
+
   <div class="modal-footer">
     <button class="btn btn-primary" id="btnDone" onclick="completeChallenge()">
       Concluir Desafio
@@ -2111,26 +2115,32 @@ function declineChallenge() {
 
 function startDoing() {
   closeModal('modalChallenge');
-  
+
   const ch = state.activeChallenge;
   const modal = document.getElementById('modalDoing');
-  
-  document.getElementById('doBadge').textContent = state.isSecret ? '🤫 SEGREDO' : 'EM ANDAMENTO';
-  document.getElementById('doTitle').textContent = state.isSecret ? 'Modo Secreto' : ch.title;
-  document.getElementById('doText').textContent = state.isSecret ? 'O desafio está sendo executado em segredo. O oponente verá os detalhes na confirmação.' : ch.text;
-  
+
+  // Atualiza o conteúdo do modal
+  document.getElementById('doBadge').textContent = ch.type === 'conquista' ? '🏆' : '🔥';
+  document.getElementById('doTitle').textContent = ch.title;
+  document.getElementById('doText').textContent = ch.description;
+
   const timerSection = document.getElementById('timerSection');
-  const timerDisplay = document.getElementById('timerDisplay');
   
+  // Garante que não existam dois timers rodando ao mesmo tempo
+  if (state.timer) {
+    clearInterval(state.timer);
+    state.timer = null;
+  }
+
   if (ch.timed && ch.time > 0) {
     timerSection.style.display = 'block';
     state.timeLeft = ch.time;
     updateTimerDisplay();
-    
+
     state.timer = setInterval(() => {
       state.timeLeft--;
       updateTimerDisplay();
-      
+
       if (state.timeLeft <= 0) {
         clearInterval(state.timer);
         state.timer = null;
@@ -2139,8 +2149,20 @@ function startDoing() {
     }, 1000);
   } else {
     timerSection.style.display = 'none';
-    timerDisplay.textContent = 'LIVRE';
   }
+
+  openModal('modalDoing');
+}
+
+function updateTimerDisplay() {
+  const timerDisplay = document.getElementById('timerDisplay');
+  if (timerDisplay) {
+    const minutes = Math.floor(state.timeLeft / 60);
+    const seconds = state.timeLeft % 60;
+    timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  }
+}
+
   
   modal.classList.add('show');
   addHistory(`▶ ${state.isSecret ? '[SECRETO] ' : ''}${ch.title}`);
