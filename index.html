@@ -3,365 +3,170 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="theme-color" content="#0a0508">
 <title>O Pacto de Prazer — Edição Pro</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-primary: #0a0508;
-    --bg-secondary: #12090f;
-    --bg-card: #1a0f16;
-    --bg-glass: rgba(255, 255, 255, 0.03);
-    --accent-primary: #ff2a6d;
-    --accent-secondary: #ff7eb3;
-    --accent-glow: rgba(255, 42, 109, 0.4);
-    --gold-primary: #ffd700;
-    --gold-secondary: #ffed4e;
-    --gold-glow: rgba(255, 215, 0, 0.3);
-    --male-primary: #4a90e2;
-    --male-glow: rgba(74, 144, 226, 0.4);
-    --text-primary: #ffffff;
-    --text-secondary: #b8a9b8;
-    --text-muted: #7a6b7a;
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-accent: rgba(255, 42, 109, 0.3);
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --safe-top: env(safe-area-inset-top, 0px);
-    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --bg-primary: #0a0508; --bg-secondary: #12090f; --bg-card: #1a0f16;
+    --accent-primary: #ff2a6d; --accent-secondary: #ff7eb3; --male-primary: #4a90e2;
+    --gold-primary: #ffd700; --text-primary: #ffffff; --text-muted: #7a6b7a;
+    --radius-md: 12px; --safe-top: env(safe-area-inset-top, 0px);
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-  html, body { height: 100%; overflow: hidden; position: fixed; width: 100%; }
-  body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); padding-top: var(--safe-top); padding-bottom: var(--safe-bottom); }
-
-  .app { height: 100dvh; display: flex; flex-direction: column; max-width: 480px; margin: 0 auto; position: relative; }
-  .header { padding: 12px 16px; text-align: center; border-bottom: 1px solid var(--border-subtle); background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%); flex-shrink: 0; }
-  .logo { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 0.05em; }
-  .subtitle { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 2px; }
-
-  .game-area { flex: 1; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 12px; }
-  .players-bar { display: flex; gap: 8px; flex-shrink: 0; }
-  .player-card { flex: 1; background: var(--bg-card); border: 2px solid var(--border-subtle); border-radius: var(--radius-md); padding: 12px; transition: all 0.2s ease; cursor: pointer; }
-  .player-card.active-f { border-color: var(--accent-primary); box-shadow: 0 0 15px var(--accent-glow); }
-  .player-card.active-m { border-color: var(--male-primary); box-shadow: 0 0 15px var(--male-glow); }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); padding-top: var(--safe-top); overflow: hidden; }
+  .app { height: 100vh; display: flex; flex-direction: column; max-width: 480px; margin: 0 auto; }
   
-  .player-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-  .player-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; background: var(--bg-glass); border: 2px solid var(--border-subtle); }
-  .player-info h3 { font-size: 0.8rem; font-weight: 600; margin: 0; }
-  .player-info span { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; }
+  /* Header & Bar */
+  .header { padding: 15px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .logo { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--accent-secondary); }
+  .game-area { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+  
+  /* Players */
+  .players-bar { display: flex; gap: 10px; }
+  .player-card { flex: 1; background: var(--bg-card); border: 2px solid transparent; border-radius: var(--radius-md); padding: 10px; text-align: center; }
+  .active-f { border-color: var(--accent-primary); box-shadow: 0 0 10px var(--accent-primary); }
+  .active-m { border-color: var(--male-primary); box-shadow: 0 0 10px var(--male-primary); }
+  
+  /* Wheel */
+  .wheel-section { text-align: center; padding: 20px 0; }
+  .wheel-container { position: relative; width: 200px; height: 200px; margin: 0 auto 20px; }
+  .wheel { width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(#ff2a6d 0% 16%, #ff7eb3 16% 33%, #ffd700 33% 50%, #e74c3c 50% 66%, #9b59b6 66% 83%, #4a90e2 83% 100%); transition: transform 3s cubic-bezier(0.1, 1, 0.2, 1); border: 5px solid #1a0f16; }
+  .pointer { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 20px solid var(--gold-primary); z-index: 10; }
 
-  .player-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .stat { text-align: center; padding: 6px; background: var(--bg-glass); border-radius: var(--radius-sm); }
-  .stat-value { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; display: block; }
-  .stat-f .stat-value { color: var(--accent-primary); }
-  .stat-m .stat-value { color: var(--male-primary); }
-  .stat-label { font-size: 0.55rem; color: var(--text-muted); text-transform: uppercase; }
+  /* Buttons */
+  .spin-btn { width: 100%; padding: 15px; border: none; border-radius: 10px; background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); color: #fff; font-weight: bold; font-family: 'Cinzel'; cursor: pointer; }
+  .spin-btn:disabled { opacity: 0.3; }
 
-  .turn-bar { background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); color: white; text-align: center; padding: 8px; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; }
-  .turn-bar.male { background: linear-gradient(90deg, var(--male-primary), #63b3ed); }
-
-  .wheel-section { display: flex; flex-direction: column; align-items: center; padding: 16px 0; }
-  .wheel-container { position: relative; width: 220px; height: 220px; margin-bottom: 16px; }
-  .wheel { width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(from 0deg, var(--accent-primary) 0deg 60deg, var(--accent-secondary) 60deg 120deg, var(--gold-primary) 120deg 180deg, #e74c3c 180deg 240deg, #9b59b6 240deg 300deg, var(--male-primary) 300deg 360deg); box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 3s cubic-bezier(0.16, 1, 0.3, 1); }
-  .wheel-pointer { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 24px solid var(--gold-primary); z-index: 20; }
-
-  .selector-row { display: flex; gap: 8px; margin-bottom: 12px; }
-  .selector-btn { flex: 1; padding: 12px; border: 2px solid var(--border-subtle); background: var(--bg-card); color: var(--text-secondary); border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; cursor: pointer; text-transform: uppercase; }
-  .selector-btn.active-f { background: var(--accent-primary); color: white; border-color: var(--accent-primary); }
-  .selector-btn.active-m { background: var(--male-primary); color: white; border-color: var(--male-primary); }
-
-  .spin-btn { width: 100%; padding: 16px; border: none; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); color: white; font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700; cursor: pointer; text-transform: uppercase; box-shadow: 0 4px 15px var(--accent-glow); }
-  .spin-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-  .spin-btn.special { background: linear-gradient(135deg, var(--gold-primary), #ff8c00); animation: pulse-gold 1.5s infinite; }
-
-  @keyframes pulse-gold { 0%, 100% { box-shadow: 0 4px 15px var(--gold-glow); } 50% { box-shadow: 0 0 30px var(--gold-glow); } }
-
-  .modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); z-index: 1000; display: none; flex-direction: column; }
-  .modal.show { display: flex; }
-  .modal-header { padding: 16px; border-bottom: 1px solid var(--border-subtle); text-align: center; }
-  .modal-badge { display: inline-block; padding: 4px 12px; background: var(--accent-primary); color: white; font-size: 0.65rem; font-weight: 700; border-radius: 20px; margin-bottom: 8px; }
-  .modal-title { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--text-primary); }
-  .modal-body { flex: 1; overflow-y: auto; padding: 16px; text-align: center; }
-  .challenge-text { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); white-space: pre-wrap; }
-  .timer-display { font-family: 'Cinzel', serif; font-size: 3.5rem; color: var(--accent-primary); text-shadow: 0 0 20px var(--accent-glow); margin: 10px 0; }
-
-  .btn { width: 100%; padding: 14px; border: none; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; cursor: pointer; text-transform: uppercase; margin-bottom: 8px; }
-  .btn-primary { background: var(--accent-primary); color: white; }
-  .btn-secondary { background: var(--bg-glass); color: var(--text-secondary); border: 1px solid var(--border-subtle); }
-  .btn-gold { background: var(--gold-primary); color: #000; }
-
-  .toolbar { position: fixed; top: 8px; right: 8px; display: flex; gap: 6px; z-index: 100; }
-  .tool-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--bg-card); color: #fff; border: 1px solid var(--border-subtle); cursor: pointer; }
-
-  .status-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-card); border-top: 1px solid var(--border-subtle); padding: 8px; display: flex; justify-content: space-around; font-size: 0.7rem; }
-  .status-value { color: var(--accent-secondary); font-weight: 700; }
-
+  /* Modals */
+  .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; flex-direction: column; padding: 20px; z-index: 100; justify-content: center; text-align: center; }
+  .show { display: flex; }
+  .timer { font-family: 'Cinzel'; font-size: 3rem; color: var(--accent-primary); margin: 20px 0; }
+  .btn { padding: 15px; border-radius: 8px; border: none; font-weight: bold; margin-top: 10px; cursor: pointer; width: 100%; }
+  .btn-go { background: var(--accent-primary); color: white; }
+  .btn-skip { background: #333; color: #ccc; }
   .hidden { display: none !important; }
 </style>
 </head>
 <body>
 
 <div class="app">
-  <div class="toolbar">
-    <button class="tool-btn" onclick="resetGame()">🔄</button>
-  </div>
-
-  <header class="header">
-    <div class="logo">O Pacto de Prazer</div>
-    <div class="subtitle">Edição Pro</div>
-  </header>
-
+  <header class="header"><div class="logo">O Pacto de Prazer</div></header>
+  
   <div class="game-area">
     <div class="players-bar">
-      <div class="player-card" id="cardF" onclick="selectPlayer('F')">
-        <div class="player-header">
-          <div class="player-avatar">👑</div>
-          <div class="player-info"><h3>Soberana</h3><span>Feminino</span></div>
-        </div>
-        <div class="player-stats">
-          <div class="stat stat-f"><span class="stat-value" id="pointsF">0</span><span class="stat-label">Glória</span></div>
-          <div class="stat stat-f"><span class="stat-value" id="moneyF">0</span><span class="stat-label">R$</span></div>
-        </div>
-      </div>
-
-      <div class="player-card" id="cardM" onclick="selectPlayer('M')">
-        <div class="player-header">
-          <div class="player-avatar">⚔️</div>
-          <div class="player-info"><h3>Submisso</h3><span>Masculino</span></div>
-        </div>
-        <div class="player-stats">
-          <div class="stat stat-m"><span class="stat-value" id="pointsM">0</span><span class="stat-label">Glória</span></div>
-          <div class="stat stat-m"><span class="stat-value" id="moneyM">0</span><span class="stat-label">R$</span></div>
-        </div>
-      </div>
+      <div id="cardF" class="player-card active-f">Soberana<br><span id="ptsF">0</span> pts</div>
+      <div id="cardM" class="player-card">Submisso<br><span id="ptsM">0</span> pts</div>
     </div>
-
-    <div class="turn-bar" id="turnBar">Vez da Soberana</div>
 
     <div class="wheel-section">
       <div class="wheel-container">
-        <div class="wheel-pointer"></div>
-        <div class="wheel" id="wheel"></div>
+        <div class="pointer"></div>
+        <div id="wheel" class="wheel"></div>
       </div>
-
-      <div style="width:100%">
-        <div class="selector-row">
-          <button class="selector-btn" id="btnF" onclick="setSelection('F')">Soberana</button>
-          <button class="selector-btn" id="btnM" onclick="setSelection('M')">Submisso</button>
-        </div>
-        <button class="spin-btn" id="spinBtn" onclick="spinWheel()" disabled>Girar Roda do Destino</button>
-      </div>
+      <button id="spinBtn" class="spin-btn" onclick="spin()">Sortear Desafio</button>
     </div>
   </div>
-
-  <div class="status-bar">
-    <div>Próx. Especial: <span class="status-value" id="nextSpecial">10 pts</span></div>
-    <div>Rodada: <span class="status-value" id="roundCount">1</span></div>
-  </div>
 </div>
 
-<div class="modal" id="modalChallenge">
-  <div class="modal-header">
-    <span class="modal-badge" id="chBadge">NOVO DESAFIO</span>
-    <h2 class="modal-title" id="chTitle">Título</h2>
-  </div>
-  <div class="modal-body">
-    <div class="challenge-text" id="chText"></div>
-  </div>
-  <div class="modal-footer" style="padding:16px">
-    <button class="btn btn-primary" onclick="startDoing()">Aceitar Desafio</button>
-    <button class="btn btn-secondary" onclick="declineChallenge()">Recusar (-3pts / -R$10)</button>
-  </div>
+<div id="modalSorteio" class="modal">
+  <h2 id="stTitle"></h2>
+  <p id="stText" style="margin: 20px 0; line-height: 1.5;"></p>
+  <button class="btn btn-go" onclick="startChallenge()">Aceitar e Iniciar</button>
+  <button class="btn btn-skip" onclick="closeModals()">Recusar</button>
 </div>
 
-<div class="modal" id="modalDoing">
-  <div class="modal-header">
-    <span class="modal-badge">EM EXECUÇÃO</span>
-    <h2 class="modal-title" id="doTitle">Executando</h2>
+<div id="modalExec" class="modal">
+  <h2 id="exTitle"></h2>
+  <div id="timerContainer">
+    <div id="displayTimer" class="timer">00:00</div>
+    <button class="btn" id="btnPause" onclick="togglePause()" style="width:auto; padding: 5px 15px;">Pausar</button>
   </div>
-  <div class="modal-body">
-    <div id="timerSection">
-      <div class="timer-display" id="timerDisplay">00:00</div>
-      <button class="btn btn-secondary" id="btn-play-pausa" onclick="toggleCronometro()" style="width:auto; padding:8px 20px;">Pausar</button>
-    </div>
-    <div class="challenge-text" id="doText" style="margin-top:20px"></div>
-  </div>
-  <div class="modal-footer" style="padding:16px">
-    <button class="btn btn-primary" onclick="showConfirmModal()">Concluir Desafio</button>
-  </div>
-</div>
-
-<div class="modal" id="modalConfirm">
-  <div class="modal-header">
-    <h2 class="modal-title">Oponente, confirme</h2>
-  </div>
-  <div class="modal-body">
-    <p>O desafio foi cumprido com excelência?</p>
-  </div>
-  <div class="modal-footer" style="padding:16px">
-    <button class="btn btn-primary" onclick="confirmResult(true)">Sim, Concluído</button>
-    <button class="btn btn-secondary" onclick="confirmResult(false)">Não Concluiu</button>
-  </div>
+  <p id="exText" style="margin: 20px 0;"></p>
+  <button class="btn btn-go" onclick="finish()">Concluir Desafio</button>
 </div>
 
 <script>
-// CONFIGURAÇÃO
-const CONFIG = { WIN_POINTS: 50, SPECIAL_INTERVAL: 10 };
-
-// DESAFIOS (Simplificados para o exemplo)
 const challenges = {
-  M: [
-    { id: "M1", title: "O Dedo no Prazer", text: "Use lubrificante para massagear o Ponto G dela de forma rítmica.", timed: true, time: 120, points: 3 },
-    { id: "M2", title: "O Beijo do Gelo", text: "Beije intensamente enquanto mantém contato físico constante.", timed: true, time: 60, points: 2 },
-    { id: "M3", title: "Pula a Vez", text: "Infelizmente, você perdeu sua vez nesta rodada.", timed: false, time: 0, points: 0 }
-  ],
-  F: [
-    { id: "F1", title: "O Ritual da Obediência", text: "Ordene 3 comandos que ele deve seguir sem hesitar.", timed: true, time: 180, points: 5 },
-    { id: "F2", title: "O Trono", text: "Ele se ajoelha e você assume o controle total da situação.", timed: true, time: 120, points: 5 }
-  ],
-  S: [
-    { id: "S1", title: "ESPECIAL: Dominação Total", text: "Você tem o direito de exigir qualquer desejo agora.", timed: true, time: 300, points: 10 }
-  ]
+  F: [{t: "Dominação", d: "Ele deve beijar seus pés por 1 minuto.", time: 60}],
+  M: [{t: "Massagem", d: "Massageie as costas dela com vigor.", time: 120}]
 };
 
-// ESTADO DO JOGO
 let state = {
-  current: 'F', selected: 'F',
-  points: { F: 0, M: 0 },
-  money: { F: 0, M: 0 },
-  nextSpecial: { F: 10, M: 999 },
-  round: 1,
-  activeChallenge: null,
-  timer: null, timeLeft: 0, isPaused: false
+  turn: 'F',
+  currentChallenge: null,
+  timeLeft: 0,
+  timerIdx: null,
+  paused: false
 };
 
-function updateUI() {
-  document.getElementById('pointsF').textContent = state.points.F;
-  document.getElementById('pointsM').textContent = state.points.M;
-  document.getElementById('moneyF').textContent = state.money.F;
-  document.getElementById('moneyM').textContent = state.money.M;
+function spin() {
+  const btn = document.getElementById('spinBtn');
+  btn.disabled = true;
   
-  const isF = state.current === 'F';
-  document.getElementById('turnBar').textContent = isF ? 'Vez da Soberana' : 'Vez do Submisso';
-  document.getElementById('turnBar').className = 'turn-bar' + (isF ? '' : ' male');
-  
-  document.getElementById('cardF').className = 'player-card' + (isF ? ' active-f' : '');
-  document.getElementById('cardM').className = 'player-card' + (!isF ? ' active-m' : '');
-  
-  document.getElementById('btnF').className = 'selector-btn' + (state.selected === 'F' ? ' active-f' : '');
-  document.getElementById('btnM').className = 'selector-btn' + (state.selected === 'M' ? ' active-m' : '');
-  
-  const spinBtn = document.getElementById('spinBtn');
-  spinBtn.disabled = state.selected !== state.current;
-  
-  if (state.points[state.current] >= state.nextSpecial[state.current] && state.current === 'F') {
-    spinBtn.classList.add('special');
-    spinBtn.textContent = "⭐ DESAFIO ESPECIAL ⭐";
-  } else {
-    spinBtn.classList.remove('special');
-    spinBtn.textContent = "Girar Roda do Destino";
-  }
-
-  document.getElementById('roundCount').textContent = state.round;
-}
-
-function selectPlayer(s) { state.selected = s; updateUI(); }
-function setSelection(s) { state.selected = s; updateUI(); }
-
-function spinWheel() {
-  const isSpecial = state.points[state.current] >= state.nextSpecial[state.current] && state.current === 'F';
-  const pool = isSpecial ? challenges.S : challenges[state.current];
-  const chosen = pool[Math.floor(Math.random() * pool.length)];
-  
-  state.activeChallenge = chosen;
-  
-  const wheel = document.getElementById('wheel');
-  const randDeg = Math.floor(Math.random() * 360) + 1440;
-  wheel.style.transform = `rotate(${randDeg}deg)`;
+  const deg = Math.floor(Math.random() * 360) + 1440;
+  document.getElementById('wheel').style.transform = `rotate(${deg}deg)`;
 
   setTimeout(() => {
-    document.getElementById('chTitle').textContent = chosen.title;
-    document.getElementById('chText').textContent = chosen.text;
-    document.getElementById('modalChallenge').classList.add('show');
-  }, 3200);
-}
-
-function startDoing() {
-  document.getElementById('modalChallenge').classList.remove('show');
-  const ch = state.activeChallenge;
-  
-  document.getElementById('doTitle').textContent = ch.title;
-  document.getElementById('doText').textContent = ch.text;
-  
-  const tSec = document.getElementById('timerSection');
-  if (state.timer) clearInterval(state.timer);
-
-  if (ch.timed && ch.time > 0) {
-    tSec.classList.remove('hidden');
-    state.timeLeft = ch.time;
-    state.isPaused = false;
-    updateTimerDisplay();
+    const list = challenges[state.turn];
+    state.currentChallenge = list[Math.floor(Math.random() * list.length)];
     
-    state.timer = setInterval(() => {
-      if (!state.isPaused) {
-        state.timeLeft--;
-        updateTimerDisplay();
-        if (state.timeLeft <= 0) {
-          clearInterval(state.timer);
-          alert("Tempo esgotado!");
-        }
+    document.getElementById('stTitle').innerText = state.currentChallenge.t;
+    document.getElementById('stText').innerText = state.currentChallenge.d;
+    document.getElementById('modalSorteio').classList.add('show');
+    btn.disabled = false;
+  }, 3100);
+}
+
+function startChallenge() {
+  document.getElementById('modalSorteio').classList.remove('show');
+  
+  const ch = state.currentChallenge;
+  document.getElementById('exTitle').innerText = ch.t;
+  document.getElementById('exText').innerText = ch.d;
+  
+  // Reset Timer
+  if (state.timerIdx) clearInterval(state.timerIdx);
+  state.timeLeft = ch.time;
+  state.paused = false;
+  
+  document.getElementById('modalExec').classList.add('show');
+  updateTimerUI();
+
+  state.timerIdx = setInterval(() => {
+    if (!state.paused) {
+      state.timeLeft--;
+      updateTimerUI();
+      if (state.timeLeft <= 0) {
+        clearInterval(state.timerIdx);
+        alert("Tempo esgotado!");
       }
-    }, 1000);
-  } else {
-    tSec.classList.add('hidden');
-  }
-  
-  document.getElementById('modalDoing').classList.add('show');
+    }
+  }, 1000);
 }
 
-function toggleCronometro() {
-  state.isPaused = !state.isPaused;
-  document.getElementById('btn-play-pausa').textContent = state.isPaused ? "Retomar" : "Pausar";
+function updateTimerUI() {
+  const m = Math.floor(state.timeLeft / 60).toString().padStart(2, '0');
+  const s = (state.timeLeft % 60).toString().padStart(2, '0');
+  document.getElementById('displayTimer').innerText = `${m}:${s}`;
 }
 
-function updateTimerDisplay() {
-  const m = Math.floor(state.timeLeft / 60);
-  const s = state.timeLeft % 60;
-  document.getElementById('timerDisplay').textContent = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+function togglePause() {
+  state.paused = !state.paused;
+  document.getElementById('btnPause').innerText = state.paused ? "Retomar" : "Pausar";
 }
 
-function showConfirmModal() {
-  if (state.timer) clearInterval(state.timer);
-  document.getElementById('modalDoing').classList.remove('show');
-  document.getElementById('modalConfirm').classList.add('show');
+function finish() {
+  clearInterval(state.timerIdx);
+  closeModals();
+  // Lógica de pontos
+  state.turn = state.turn === 'F' ? 'M' : 'F';
+  document.getElementById('cardF').classList.toggle('active-f');
+  document.getElementById('cardM').classList.toggle('active-m');
 }
 
-function confirmResult(success) {
-  document.getElementById('modalConfirm').classList.remove('show');
-  if (success) {
-    state.points[state.current] += (state.activeChallenge.points || 3);
-  } else {
-    state.points[state.current] = Math.max(0, state.points[state.current] - 3);
-    state.money[state.current] -= 20;
-  }
-  
-  // Próximo turno
-  state.current = state.current === 'F' ? 'M' : 'F';
-  state.selected = state.current;
-  state.round++;
-  updateUI();
+function closeModals() {
+  document.querySelectorAll('.modal').forEach(m => m.classList.remove('show'));
 }
-
-function resetGame() {
-  if(confirm("Reiniciar o jogo?")) location.reload();
-}
-
-// Inicialização
-updateUI();
 </script>
 </body>
 </html>
