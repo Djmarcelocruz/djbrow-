@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="theme-color" content="#0a0508">
 <meta name="description" content="O Pacto de Prazer - Jogo de desafios para casais">
-<title>O Pacto de Prazer — Ediço Pro (Corrigido)</title>
+<title>O Pacto de Prazer — Edição Pro (Corrigido)</title>
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-512.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -504,7 +504,7 @@
   }
 
   .rule-title::before {
-    content: '';
+    content: '◆';
     color: var(--accent-primary);
     font-size: 0.5rem;
   }
@@ -1028,39 +1028,39 @@
 <body>
 
 <div class="offline-indicator" id="offlineIndicator" role="status" aria-live="polite">
-   Modo Offline - Jogo funcionando normalmente
+  ⚠️ Modo Offline - Jogo funcionando normalmente
 </div>
 
 <div class="app" role="main" aria-label="O Pacto de Prazer - Jogo Principal">
   <!-- Toolbar -->
   <div class="toolbar" role="toolbar" aria-label="Ferramentas do jogo">
     <button class="tool-btn" onclick="openEdit()" title="Editar Desafios" aria-label="Abrir editor de desafios">
-      
+      ✏️
       <span class="sr-only">Editar</span>
     </button>
     <button class="tool-btn" onclick="resetGame()" title="Reiniciar Jogo" aria-label="Reiniciar jogo">
-      
+      🔄
       <span class="sr-only">Reiniciar</span>
     </button>
     <button class="tool-btn" onclick="importData()" title="Importar Backup" aria-label="Importar backup">
-      
+      📥
       <span class="sr-only">Importar</span>
     </button>
     <button class="tool-btn" onclick="exportData()" title="Exportar Dados" aria-label="Exportar dados do jogo">
-      
+      💾
       <span class="sr-only">Exportar</span>
     </button>
   </div>
 
   <!-- Undo Button -->
-  <button class="undo-btn" id="undoBtn" onclick="undoLastAction()" disabled title="Desfazer última aço" aria-label="Desfazer última aço">
-    
+  <button class="undo-btn" id="undoBtn" onclick="undoLastAction()" disabled title="Desfazer última ação" aria-label="Desfazer última ação">
+    ↩️
   </button>
 
   <!-- Header -->
   <header class="header">
     <div class="logo" role="heading" aria-level="1">O Pacto de Prazer</div>
-    <div class="subtitle">Ediço Pro</div>
+    <div class="subtitle">Edição Pro</div>
   </header>
 
   <!-- Game Area -->
@@ -1069,7 +1069,7 @@
     <div class="players-bar" role="region" aria-label="Jogadores">
       <div class="player-card" id="cardF" onclick="selectPlayer('F')" role="button" tabindex="0" aria-pressed="false" aria-label="Selecionar Soberana">
         <div class="player-header">
-          <div class="player-avatar" aria-hidden="true"></div>
+          <div class="player-avatar" aria-hidden="true">👑</div>
           <div class="player-info">
             <h3>Soberana</h3>
             <span>Feminino</span>
@@ -1089,7 +1089,7 @@
 
       <div class="player-card" id="cardM" onclick="selectPlayer('M')" role="button" tabindex="0" aria-pressed="false" aria-label="Selecionar Submisso">
         <div class="player-header">
-          <div class="player-avatar" aria-hidden="true"></div>
+          <div class="player-avatar" aria-hidden="true">⚔️</div>
           <div class="player-info">
             <h3>Submisso</h3>
             <span>Masculino</span>
@@ -1118,7 +1118,7 @@
       <div class="wheel-container">
         <div class="wheel-pointer" aria-hidden="true"></div>
         <div class="wheel" id="wheel" role="img" aria-label="Roda de desafios">
-          <div class="wheel-center" aria-hidden="true"></div>
+          <div class="wheel-center" aria-hidden="true">★</div>
         </div>
       </div>
 
@@ -1142,43 +1142,43 @@
       <!-- Rules -->
       <div class="panel" id="panelRules">
         <div class="panel-header" onclick="togglePanel('panelRules')" role="button" tabindex="0" aria-expanded="false" aria-controls="panelRulesContent">
-          <span class="panel-title"> O Código do Pacto</span>
-          <span class="panel-icon" aria-hidden="true"></span>
+          <span class="panel-title">📜 O Código do Pacto</span>
+          <span class="panel-icon" aria-hidden="true">▼</span>
         </div>
         <div class="panel-content" id="panelRulesContent">
           <div class="panel-body">
             <div class="rule-item">
               <div class="rule-title">PACTO DE SANGUE</div>
-              A Engenharia do Prazer:
-Este sistema no é um passatempo comum. Ele foi desenvolvido por especialistas e profissionais do mercado erótico, utilizando técnicas de psicologia sensorial e mapeamento de zonas erógenas. Cada desafio foi arquitetado com as "artimanhas" exatas para expor os pontos mais vulneráveis de homens e mulheres, garantindo uma escalada de tenso e excitaço sem precedentes.
+              ​A Engenharia do Prazer:
+Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas e profissionais do mercado erótico, utilizando técnicas de psicologia sensorial e mapeamento de zonas erógenas. Cada desafio foi arquitetado com as "artimanhas" exatas para expor os pontos mais vulneráveis de homens e mulheres, garantindo uma escalada de tensão e excitação sem precedentes.
             </div>
             <div class="rule-item">
               <div class="rule-title">SEGREDOS DOS DEUSES</div>
-              O Jogador pode optar por no revelar o desafio, mas DEVE cumprir sem hesitar. O oponente confirma.
+              O Jogador pode optar por não revelar o desafio, mas DEVE cumprir sem hesitar. O oponente confirma.
             </div>
             <div class="rule-item">
-              <div class="rule-title">RESISTNCIA DE FERRO</div>
+              <div class="rule-title">RESISTÊNCIA DE FERRO</div>
               É PROIBIDO GOZAR/EJACULAR antes do final (salvo se o desafio exigir).
-              <span class="rule-penalty">SATURAÇO: Penalidade + banho + retorno. Recompensa: Sex* Oral 5-10s</span>
+              <span class="rule-penalty">SATURAÇÃO: Penalidade + banho + retorno. Recompensa: Sex* Oral 5-10s</span>
             </div>
             <div class="rule-item">
-              <div class="rule-title">DESERÇO DA REALEZA</div>
-              Desistir após o 1 giro: Multa R$100,00 ao parceiro(a).
+              <div class="rule-title">DESERÇÃO DA REALEZA</div>
+              Desistir após o 1º giro: Multa R$100,00 ao parceiro(a).
             </div>
             <div class="rule-item">
-              <div class="rule-title">IMPERFEIÇO DO ATO</div>
-              No seguir EXATAMENTE o desejo:
+              <div class="rule-title">IMPERFEIÇÃO DO ATO</div>
+              Não seguir EXATAMENTE o desejo:
               <span class="rule-penalty">-R$20,00 e -3 pts</span>
             </div>
             <div class="rule-item">
-              <div class="rule-title">RECUSA PADRO</div>
+              <div class="rule-title">RECUSA PADRÃO</div>
               Recusar desafio:
               <span class="rule-penalty">-R$10 e -3 pts (transferido ao oponente)</span>
             </div>
             <div class="rule-item">
               <div class="rule-title">DESAFIO ESPECIAL</div>
-              "Este sistema possui um Protocolo Oculto: Desafio Especial. Ele foi desenvolvido por especialistas para ser o ápice do prazer e da submisso, com verses adaptadas para a anatomia masculina e feminina. No entanto, o código está bloqueado.
-A Regra de Ouro: Apenas o primeiro jogador a atingir 20 Pontos terá a honra de desbloquear e ordenar a execuço deste desafio. O vencedor assume o controlo total, e o perdedor terá de enfrentar a técnica mais avançada do jogo: o toque que retira todo o controlo do corpo."
+              ​"Este sistema possui um Protocolo Oculto: Desafio Especial. Ele foi desenvolvido por especialistas para ser o ápice do prazer e da submissão, com versões adaptadas para a anatomia masculina e feminina. No entanto, o código está bloqueado.
+​A Regra de Ouro: Apenas o primeiro jogador a atingir 20 Pontos terá a honra de desbloquear e ordenar a execução deste desafio. O vencedor assume o controlo total, e o perdedor terá de enfrentar a técnica mais avançada do jogo: o toque que retira todo o controlo do corpo."
             </div>
           </div>
         </div>
@@ -1187,8 +1187,8 @@ Este sistema no é um passatempo comum. Ele foi desenvolvido por especialistas 
       <!-- History -->
       <div class="panel" id="panelHistory">
         <div class="panel-header" onclick="togglePanel('panelHistory')" role="button" tabindex="0" aria-expanded="false" aria-controls="panelHistoryContent">
-          <span class="panel-title"> Crônica dos Desafios</span>
-          <span class="panel-icon" aria-hidden="true"></span>
+          <span class="panel-title">📋 Crônica dos Desafios</span>
+          <span class="panel-icon" aria-hidden="true">▼</span>
         </div>
         <div class="panel-content" id="panelHistoryContent">
           <div class="panel-body">
@@ -1222,7 +1222,7 @@ Este sistema no é um passatempo comum. Ele foi desenvolvido por especialistas 
 </div>
 
 <!-- Toast Container -->
-<div class="toast-container" id="toasts" role="region" aria-label="Notificaçes"></div>
+<div class="toast-container" id="toasts" role="region" aria-label="Notificações"></div>
 
 <!-- Modal: Challenge -->
 <div class="modal" id="modalChallenge" role="dialog" aria-modal="true" aria-labelledby="chTitle">
@@ -1239,7 +1239,7 @@ Este sistema no é um passatempo comum. Ele foi desenvolvido por especialistas 
     </button>
     <div class="btn-row">
       <button class="btn btn-primary" onclick="acceptChallenge()">Aceitar</button>
-      <button class="btn btn-gold" onclick="acceptSecret()"> Segredo</button>
+      <button class="btn btn-gold" onclick="acceptSecret()">🤫 Segredo</button>
     </div>
   </div>
 </div>
@@ -1267,7 +1267,7 @@ Este sistema no é um passatempo comum. Ele foi desenvolvido por especialistas 
 <!-- Modal: Confirmation -->
 <div class="modal" id="modalConfirm" role="dialog" aria-modal="true" aria-labelledby="cfTitle">
   <div class="modal-header">
-    <span class="modal-badge">CONFIRMAÇO</span>
+    <span class="modal-badge">CONFIRMAÇÃO</span>
     <h2 class="modal-title" id="cfTitle">Oponente, confirme</h2>
   </div>
   <div class="modal-body">
@@ -1279,10 +1279,10 @@ Este sistema no é um passatempo comum. Ele foi desenvolvido por especialistas 
   </div>
   <div class="modal-footer">
     <button class="btn btn-danger" onclick="confirmResult(false)">
-      No Concluiu (-R$20/-3pts)
+      Não Concluiu (-R$20/-3pts)
     </button>
     <button class="btn btn-primary" onclick="confirmResult(true)">
-      Confirmo Concluso
+      Confirmo Conclusão
     </button>
   </div>
 </div>
@@ -1290,16 +1290,16 @@ Este sistema no é um passatempo comum. Ele foi desenvolvido por especialistas 
 <!-- Modal: Victory -->
 <div class="modal" id="modalVictory" role="dialog" aria-modal="true" aria-labelledby="victoryTitle">
   <div class="modal-header">
-    <span class="modal-badge special"> VITÓRIA</span>
+    <span class="modal-badge special">🏆 VITÓRIA</span>
     <h2 class="modal-title" id="victoryTitle" style="color:var(--gold-primary);">O Pacto Foi Cumprido!</h2>
   </div>
   <div class="modal-body" style="text-align:center;">
-    <div style="font-size:4rem;margin:20px 0;" aria-hidden="true"></div>
+    <div style="font-size:4rem;margin:20px 0;" aria-hidden="true">👑</div>
     <p id="victoryText" style="font-size:0.95rem;line-height:1.7;"></p>
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary" onclick="celebrateVictory()">
-      Celebraço do Vencedor
+      Celebração do Vencedor
     </button>
     <button class="btn btn-secondary" onclick="refuseVictory()">
       Parceiro Recusa (-R$50)
@@ -1310,7 +1310,7 @@ Este sistema no é um passatempo comum. Ele foi desenvolvido por especialistas 
 <!-- Modal: Password -->
 <div class="modal" id="modalPassword" role="dialog" aria-modal="true" aria-labelledby="pwdTitle">
   <div class="modal-header">
-    <span class="modal-badge"> SEGURANÇA</span>
+    <span class="modal-badge">🔒 SEGURANÇA</span>
     <h2 class="modal-title" id="pwdTitle">Acesso Restrito</h2>
   </div>
   <div class="modal-body">
@@ -1327,7 +1327,7 @@ Este sistema no é um passatempo comum. Ele foi desenvolvido por especialistas 
 <!-- Modal: Editor -->
 <div class="modal" id="modalEdit" role="dialog" aria-modal="true" aria-labelledby="editTitle">
   <div class="modal-header">
-    <span class="modal-badge"> EDITOR</span>
+    <span class="modal-badge">⚔️ EDITOR</span>
     <h2 class="modal-title" id="editTitle">Forjar Desejos</h2>
   </div>
   <div class="modal-body" style="padding:0;">
@@ -1342,13 +1342,13 @@ Este sistema no é um passatempo comum. Ele foi desenvolvido por especialistas 
   </div>
   <div class="modal-footer">
     <button class="btn btn-secondary" onclick="closeEdit()">Cancelar</button>
-    <button class="btn btn-primary" onclick="saveEdits()">Salvar Alteraçes</button>
+    <button class="btn btn-primary" onclick="saveEdits()">Salvar Alterações</button>
   </div>
 </div>
 
 <script>
 // ==========================================
-// CONFIGURAÇO E CONSTANTES
+// CONFIGURAÇÃO E CONSTANTES
 // ==========================================
 
 const CONFIG = {
@@ -1364,14 +1364,14 @@ const CONFIG = {
 };
 
 // ==========================================
-// DESAFIOS PADRO
+// DESAFIOS PADRÃO
 // ==========================================
 
 const defaultChallenges = {
   M: [
     {
       id: "M1",
-      title: "kkkkkk - Voc perdeu a vez",
+      title: "kkkkkk - Você perdeu a vez",
       text: "",
       timed: false,
       pointsValue: -3,
@@ -1380,7 +1380,7 @@ const defaultChallenges = {
     {
       id: "M2",
       title: "O gancho do prazer",
-      text: "\"Deita-a de costas com as pernas elevadas. Usa lubrificante e introduz dois dedos na vagina dela com a palma virada para cima. Faz o movimento de 'vem cá' (em forma de gancho), pressionando firmemente a parede superior interna (o Ponto G dela).\nA Regra: Deves manter um ritmo intenso e constante por 2 minutos. Enquanto usas a mo, deves olhar fixamente nos olhos dela e descrever, com detalhes safados, o que lhe vais fazer na próxima vez que a roleta parar no teu nome. Se ela ficar completamente encharcada ou gozar, ganhas +3 pontos de bónus.\"",
+      text: "\"Deita-a de costas com as pernas elevadas. Usa lubrificante e introduz dois dedos na vagina dela com a palma virada para cima. Faz o movimento de 'vem cá' (em forma de gancho), pressionando firmemente a parede superior interna (o Ponto G dela).\nA Regra: Deves manter um ritmo intenso e constante por 2 minutos. Enquanto usas a mão, deves olhar fixamente nos olhos dela e descrever, com detalhes safados, o que lhe vais fazer na próxima vez que a roleta parar no teu nome. Se ela ficar completamente encharcada ou gozar, ganhas +3 pontos de bónus.\"",
       timed: true,
       time: 120,
       pointsValue: 3
@@ -1388,7 +1388,7 @@ const defaultChallenges = {
     {
       id: "M3",
       title: "O Beijo do Gelo",
-      text: "Beije intensamente e ao mesmo tempo posicione só a cabecinha do seu pnis na entrada da vagina dela com pequena penetracao",
+      text: "Beije intensamente e ao mesmo tempo posicione só a cabecinha do seu pênis na entrada da vagina dela com pequena penetracao",
       timed: true,
       time: 60,
       pointsValue: 3
@@ -1396,7 +1396,7 @@ const defaultChallenges = {
     {
       id: "M4",
       title: "O Dedo no Prazer",
-      text: "Use um ou dois dedos com lubrificante para massagear o Ponto G dela, de forma profunda e rítmica, voc pode lamber os lábios ao mesmo tempo que enteodyz o dedo",
+      text: "Use um ou dois dedos com lubrificante para massagear o Ponto G dela, de forma profunda e rítmica, você pode lamber os lábios ao mesmo tempo que enteodyz o dedo",
       timed: true,
       pointsValue: 3,
       time: 120
@@ -1404,7 +1404,7 @@ const defaultChallenges = {
     {
       id: "M5",
       title: "O Prazer Oral Extremo",
-      text: "Pratique sexo oral nela, com presso e sucço alternadas. Observaço: se ela gozar, o jogador perde R$10 neste desafio.",
+      text: "Pratique sexo oral nela, com pressão e sucção alternadas. Observação: se ela gozar, o jogador perde R$10 neste desafio.",
       timed: true,
       time: 180,
       pointsValue: 2
@@ -1412,7 +1412,7 @@ const defaultChallenges = {
     {
       id: "M6",
       title: "O Roçar Proibido",
-      text: "Coloque-a na posiço de quatro e roce seu pnis (ereto) na entrada da vagina, com leve penetraço para excitar profundamente.",
+      text: "Coloque-a na posição de quatro e roce seu pênis (ereto) na entrada da vagina, com leve penetração para excitar profundamente.",
       timed: true,
       pointsValue: 2,
       time: 60
@@ -1420,14 +1420,14 @@ const defaultChallenges = {
     {
       id: "M7",
       title: "O Segredo Anal",
-      text: "Use lubrificante e faça carinho na entrada do ânus com um dedo enquanto estimula a vagina com a boca, explorando excitaço simultânea.",
+      text: "Use lubrificante e faça carinho na entrada do ânus com um dedo enquanto estimula a vagina com a boca, explorando excitação simultânea.",
       timed: true,
       pointsValue: 2,
       time: 60
     },
     {
       id: "M8",
-      title: "E muito triste mas voc perdeu a vez.",
+      title: "E muito triste mas você perdeu a vez.",
       text: "",
       timed: false,
       pointsValue: -3,
@@ -1436,23 +1436,23 @@ const defaultChallenges = {
     {
       id: "M9",
       title: "Massagem intensa e relaxante",
-      text: "Massagem intensa e relaxante — pergunte onde ela prefere. Duraço: 2 minutos.",
+      text: "Massagem intensa e relaxante — pergunte onde ela prefere. Duração: 2 minutos.",
       timed: true,
       time: 120,
       pointsValue: 5
     },
     {
       id: "M10",
-      title: "A Satisfaço Total (Coringa)",
-      text: "Controle total por 5 minutos (voc define aço/posiço).",
+      title: "A Satisfação Total (Coringa)",
+      text: "Controle total por 5 minutos (você define ação/posição).",
       timed: true,
       time: 300,
       pointsValue: 8
     },
     {
       id: "M11",
-      title: "A Negaço de Estocadas",
-      text: "D exatamente 4 estocadas e retire; repita 3 ciclos. Se ela gozar, penalidade pesada prevista.",
+      title: "A Negação de Estocadas",
+      text: "Dê exatamente 4 estocadas e retire; repita 3 ciclos. Se ela gozar, penalidade pesada prevista.",
       timed: true,
       pointsValue: 2,
       time: 60
@@ -1460,7 +1460,7 @@ const defaultChallenges = {
     {
       id: "M12",
       title: "O Orgasmo Garantido",
-      text: "Faça sexo oral combinando com massagem de ponto G, introduza o dedo e faca a alavanca no na vagina Observaço: se ela gozar neste desafio, voc perder 10 reais.",
+      text: "Faça sexo oral combinando com massagem de ponto G, introduza o dedo e faca a alavanca no na vagina Observação: se ela gozar neste desafio, você perder 10 reais.",
       timed: true,
       time: 120,
       pointsValue: 2
@@ -1468,7 +1468,7 @@ const defaultChallenges = {
     {
       id: "M13",
       title: "Pula a vez",
-      text: "Voc passa a vez",
+      text: "Você passa a vez",
       timed: false,
       pointsValue: -3,
       time: 0
@@ -1476,7 +1476,7 @@ const defaultChallenges = {
     {
       id: "M14",
       title: "O Deslizamento do Desejo",
-      text: "Deslize seu pnis por costas e nádegas e só ameaça penetraço",
+      text: "Deslize seu pênis por costas e nádegas e só ameaça penetração",
       timed: true,
       pointsValue: 3,
       time: 60
@@ -1494,15 +1494,15 @@ const defaultChallenges = {
     {
       id: "F1",
       title: "Desafio: O Ponto de Ruptura",
-      text: "\"Sua misso é torturá-lo com prazer até que ele no aguente mais o silncio. Voc deve levá-lo ao limite extremo usando suas mos, boca ou corpo.\nEle PERDE R$ 10,00: No momento em que ele for obrigado a dizer 'Para!', 'Vou gozar!' ou 'Tô quase!'. O aviso é a prova da sua vitória sobre a mente dele.\nVoc PERDE: Se voc no parar a tempo e ele gozar. Nesse caso, ele 'escapou' do seu controle e a misso falhou.\"",
+      text: "\"Sua missão é torturá-lo com prazer até que ele não aguente mais o silêncio. Você deve levá-lo ao limite extremo usando suas mãos, boca ou corpo.\nEle PERDE R$ 10,00: No momento em que ele for obrigado a dizer 'Para!', 'Vou gozar!' ou 'Tô quase!'. O aviso é a prova da sua vitória sobre a mente dele.\nVocê PERDE: Se você não parar a tempo e ele gozar. Nesse caso, ele 'escapou' do seu controle e a missão falhou.\"",
       timed: true,
       time: 180,
       pointsValue: 3
     },
     {
       id: "F2",
-      title: "O Ritual da Obedincia",
-      text: "\"O parceiro perde todos os seus direitos. Ele deve se ajoelhar, baixar a cabeça e esperar suas ordens. Voc é a Dona Absoluta.\n1. A Fantasia: Voc dita a cena. Pode ser um fetiche, uma posiço específica onde ele serve apenas como seu 'móvel' de prazer, ou uma simulaço onde ele é um escravo capturado. Ele deve realizar cada detalhe sem hesitar.\n2. A Puniço Livre: Se em qualquer momento ele falhar, hesitar, ou até mesmo se ele tiver uma reaço de prazer que voc no autorizou, a puniço é imediata. Voc decide o que aplicar: palmadas fortes, mordidas, belisces ou deixá-lo em uma posiço desconfortável por alguns minutos.\n3. O Abuso do Desejo: Use o corpo dele como voc quiser. Se quiser sentar no rosto dele enquanto ele mal consegue respirar, faça. Se quiser que ele apenas te observe se tocar enquanto ele sofre por no poder participar, essa é a sua vontade.\nPena de Desobedincia: Qualquer sinal de resistncia custará R$ 100,00 e a perda de todos os pontos dele no jogo.\"",
+      title: "O Ritual da Obediência",
+      text: "\"O parceiro perde todos os seus direitos. Ele deve se ajoelhar, baixar a cabeça e esperar suas ordens. Você é a Dona Absoluta.\n1. A Fantasia: Você dita a cena. Pode ser um fetiche, uma posição específica onde ele serve apenas como seu 'móvel' de prazer, ou uma simulação onde ele é um escravo capturado. Ele deve realizar cada detalhe sem hesitar.\n2. A Punição Livre: Se em qualquer momento ele falhar, hesitar, ou até mesmo se ele tiver uma reação de prazer que você não autorizou, a punição é imediata. Você decide o que aplicar: palmadas fortes, mordidas, beliscões ou deixá-lo em uma posição desconfortável por alguns minutos.\n3. O Abuso do Desejo: Use o corpo dele como você quiser. Se quiser sentar no rosto dele enquanto ele mal consegue respirar, faça. Se quiser que ele apenas te observe se tocar enquanto ele sofre por não poder participar, essa é a sua vontade.\nPena de Desobediência: Qualquer sinal de resistência custará R$ 100,00 e a perda de todos os pontos dele no jogo.\"",
       timed: true,
       time: 180,
       pointsValue: 5
@@ -1510,7 +1510,7 @@ const defaultChallenges = {
     {
       id: "F3",
       title: "O Trono",
-      text: "Ele se ajoelha; voc o chama de 'safado' ou 'escravo' e dá até trs comandos da sua preferncia. Reforce dominância com toques leves e puxo de cabelo (sem força).",
+      text: "Ele se ajoelha; você o chama de 'safado' ou 'escravo' e dá até três comandos da sua preferência. Reforce dominância com toques leves e puxão de cabelo (sem força).",
       timed: true,
       time: 60,
       pointsValue: 5
@@ -1518,7 +1518,7 @@ const defaultChallenges = {
     {
       id: "F4",
       title: "A Marca do Desejo",
-      text: "Beije-o intensamente, segure pela nuca e faça carícia ultralenta e frustrante no pnis. Judiá-lo e ordenar um único desejo seu (1 minuto).",
+      text: "Beije-o intensamente, segure pela nuca e faça carícia ultralenta e frustrante no pênis. Judiá-lo e ordenar um único desejo seu (1 minuto).",
       timed: true,
       time: 60,
       pointsValue: 5
@@ -1526,7 +1526,7 @@ const defaultChallenges = {
     {
       id: "F5",
       title: "A Senhora e o Submisso",
-      text: "Voc tem controle total por 2 minutos: ordene posiçes, toque e negue o gozo.",
+      text: "Você tem controle total por 2 minutos: ordene posições, toque e negue o gozo.",
       timed: true,
       time: 120,
       pointsValue: 8
@@ -1534,15 +1534,15 @@ const defaultChallenges = {
     {
       id: "F6",
       title: "O Prazer Proibido",
-      text: "Use boca e mo para massagear o pnis e a entrada do ânus simultaneamente. (1 minuto)",
+      text: "Use boca e mão para massagear o pênis e a entrada do ânus simultaneamente. (1 minuto)",
       timed: true,
       time: 60,
       pointsValue: 8
     },
     {
       id: "F7",
-      title: "A Trilha da Provocaço",
-      text: "Use língua para pequenas chupadas e mordidas, trace o corpo dele e faça masturbaço forte no pnis. (1 minuto)",
+      title: "A Trilha da Provocação",
+      text: "Use língua para pequenas chupadas e mordidas, trace o corpo dele e faça masturbação forte no pênis. (1 minuto)",
       timed: true,
       time: 60,
       pointsValue: 5
@@ -1550,7 +1550,7 @@ const defaultChallenges = {
     {
       id: "F8",
       title: "O Privilégio da Posse",
-      text: "\"Ele deve roçar o pnis com carinho no seu clitóris, proibido de penetrar. Enquanto isso, domine a bunda dele com pegada forte: roce o dedo no ânus e, se voc desejar, use lubrificante para penetrá-lo. Voc dita o ritmo da exploraço. Se ele tentar entrar em voc ou gozar, paga R$ 10,00.",
+      text: "\"Ele deve roçar o pênis com carinho no seu clitóris, proibido de penetrar. Enquanto isso, domine a bunda dele com pegada forte: roce o dedo no ânus e, se você desejar, use lubrificante para penetrá-lo. Você dita o ritmo da exploração. Se ele tentar entrar em você ou gozar, paga R$ 10,00.",
       timed: true,
       time: 180,
       pointsValue: 5
@@ -1558,23 +1558,23 @@ const defaultChallenges = {
     {
       id: "F13",
       title: "O Sussurro do Terror",
-      text: "Sussurre fantasias e execute açes. Ele no pode gozar: se gozar, perde o valor combinado. (1 minuto)",
+      text: "Sussurre fantasias e execute ações. Ele não pode gozar: se gozar, perde o valor combinado. (1 minuto)",
       timed: true,
       time: 60,
       pointsValue: 5
     },
     {
       id: "F14",
-      title: "A Puniço de Choque",
-      text: "Carícias intensas no pnis por 1 minuto; depois chupe mamilo e d um peteleco leve na ponta do pnis. (1 minuto)",
+      title: "A Punição de Choque",
+      text: "Carícias intensas no pênis por 1 minuto; depois chupe mamilo e dê um peteleco leve na ponta do pênis. (1 minuto)",
       timed: true,
       time: 60,
       pointsValue: 5
     },
     {
       id: "F15",
-      title: "Misso Suprema: O dedo da Rainha",
-      text: "\"Existem segredos no corpo de um homem que só uma Rainha tem a permisso de tocar. Esta no é uma simples carícia; é uma invaso tática. O Ponto G dele é a sua chave de comando. Ele é a área mais sensível, onde o prazer se torna dor e o controle desaparece. Como ele no terá poder sobre os próprios espasmos, voc assume a responsabilidade total pela sanidade dele.\"\nA Execuço Magistral:\nO Relaxamento: Use sua boca e mos no pnis dele com lubrificante. No é para ele gozar, é para ele se abrir. Sinta a resistncia dele sumir enquanto voc o envolve.\nA Invaso: Quando ele estiver entregue, introduza o Dedo da Rainha. Navegue com autoridade até encontrar o Ponto P.\nA Maestria: Ao atingir o ponto, voc sentirá a alma dele vibrar sob o Dedo da Rainha. Mantenha a massagem interna enquanto continua o estímulo externo. Voc ganha se levá-lo ao transe sem deixá-lo derramar uma gota.\nAs Leis da Soberana:\nDesistir é caro: Se voc no tiver coragem de dominar esse território, o preço da sua hesitaço é R$ 30,00 para ele.\nA Glória da Rainha: Se voc aceitar e provar sua maestria, ele paga R$ 15,00 em tributo  sua habilidade superior.\nO Erro Fatal: Se a sua mo pesar ou ele for fraco e gozar, a derrota é sua: voc paga os R$ 30,00. A falha do escravo é a desonra da dona.",
+      title: "Missão Suprema: O dedo da Rainha",
+      text: "\"Existem segredos no corpo de um homem que só uma Rainha tem a permissão de tocar. Esta não é uma simples carícia; é uma invasão tática. O Ponto G dele é a sua chave de comando. Ele é a área mais sensível, onde o prazer se torna dor e o controle desaparece. Como ele não terá poder sobre os próprios espasmos, você assume a responsabilidade total pela sanidade dele.\"\nA Execução Magistral:\nO Relaxamento: Use sua boca e mãos no pênis dele com lubrificante. Não é para ele gozar, é para ele se abrir. Sinta a resistência dele sumir enquanto você o envolve.\nA Invasão: Quando ele estiver entregue, introduza o Dedo da Rainha. Navegue com autoridade até encontrar o Ponto P.\nA Maestria: Ao atingir o ponto, você sentirá a alma dele vibrar sob o Dedo da Rainha. Mantenha a massagem interna enquanto continua o estímulo externo. Você ganha se levá-lo ao transe sem deixá-lo derramar uma gota.\nAs Leis da Soberana:\nDesistir é caro: Se você não tiver coragem de dominar esse território, o preço da sua hesitação é R$ 30,00 para ele.\nA Glória da Rainha: Se você aceitar e provar sua maestria, ele paga R$ 15,00 em tributo à sua habilidade superior.\nO Erro Fatal: Se a sua mão pesar ou ele for fraco e gozar, a derrota é sua: você paga os R$ 30,00. A falha do escravo é a desonra da dona.",
       timed: true,
       time: 360,
       pointsValue: 8
@@ -1583,8 +1583,8 @@ const defaultChallenges = {
   S: [
     {
       id: "S1",
-      title: "Misso Suprema: O dedo da Rainha",
-      text: "\"Existem segredos no corpo de um homem que só uma Rainha tem a permisso de tocar. Esta no é uma simples carícia; é uma invaso tática. O Ponto G dele é a sua chave de comando.\nA Execuço Magistral:\nO Relaxamento: Use boca e mos no pnis dele com lubrificante. Ele deve estar entregue, mas proibido de gozar.\nA Invaso: Com autoridade, introduz o dedo lubrificado no ânus dele. Navega com autoridade até encontrares o Ponto P (a próstata).\nA Maestria: Mantenha a massagem interna enquanto continua o estímulo externo. Voc vence se levá-lo ao transe sem deixá-lo derramar uma gota.\nAs Leis da Soberana:\nDesistir: Se voc hesitar em dominar esse território, pague R$ 30,00 para ele.\nA Glória: Se provar sua maestria, ele paga R$ 15,00 em tributo  sua soberania.\nO Erro Fatal: Se ele for fraco e gozar, voc perde a honra e paga os R$ 30,00.\"",
+      title: "Missão Suprema: O dedo da Rainha",
+      text: "\"Existem segredos no corpo de um homem que só uma Rainha tem a permissão de tocar. Esta não é uma simples carícia; é uma invasão tática. O Ponto G dele é a sua chave de comando.\nA Execução Magistral:\nO Relaxamento: Use boca e mãos no pênis dele com lubrificante. Ele deve estar entregue, mas proibido de gozar.\nA Invasão: Com autoridade, introduz o dedo lubrificado no ânus dele. Navega com autoridade até encontrares o Ponto P (a próstata).\nA Maestria: Mantenha a massagem interna enquanto continua o estímulo externo. Você vence se levá-lo ao transe sem deixá-lo derramar uma gota.\nAs Leis da Soberana:\nDesistir: Se você hesitar em dominar esse território, pague R$ 30,00 para ele.\nA Glória: Se provar sua maestria, ele paga R$ 15,00 em tributo à sua soberania.\nO Erro Fatal: Se ele for fraco e gozar, você perde a honra e paga os R$ 30,00.\"",
       timed: true,
       time: 360,
       pointsValue: 6
@@ -1634,9 +1634,9 @@ async function initDB() {
     const timeoutId = setTimeout(() => {
       if (!resolved) {
         resolved = true;
-        console.warn(' IndexedDB timeout - usando fallback');
+        console.warn('⏱️ IndexedDB timeout - usando fallback');
         db = null;
-        resolve(null); // No rejeita, resolve com null para continuar
+        resolve(null); // Não rejeita, resolve com null para continuar
       }
     }, TIMEOUT);
     
@@ -1648,7 +1648,7 @@ async function initDB() {
       clearTimeout(timeoutId);
       if (!resolved) {
         resolved = true;
-        console.warn(' Erro ao abrir IndexedDB:', e);
+        console.warn('⚠️ Erro ao abrir IndexedDB:', e);
         db = null;
         resolve(null);
       }
@@ -1659,7 +1659,7 @@ async function initDB() {
       if (resolved) return;
       resolved = true;
       clearTimeout(timeoutId);
-      console.warn(' IndexedDB error:', request.error);
+      console.warn('❌ IndexedDB error:', request.error);
       db = null;
       resolve(null); // Continua sem banco de dados
     };
@@ -1669,7 +1669,7 @@ async function initDB() {
       resolved = true;
       clearTimeout(timeoutId);
       db = request.result;
-      console.log(' IndexedDB conectado');
+      console.log('✅ IndexedDB conectado');
       resolve(db);
     };
     
@@ -1681,8 +1681,8 @@ async function initDB() {
     };
     
     request.onblocked = () => {
-      console.warn(' IndexedDB bloqueado');
-      // No resolve aqui, deixa o timeout resolver
+      console.warn('⚠️ IndexedDB bloqueado');
+      // Não resolve aqui, deixa o timeout resolver
     };
   });
 }
@@ -1719,7 +1719,7 @@ async function saveToDB() {
     localStorage.setItem('pactoState', JSON.stringify(state));
     localStorage.setItem('pactoChallenges', JSON.stringify(challenges));
     localStorage.setItem('pactoTimestamp', Date.now().toString());
-    console.log(' Salvo em localStorage (fallback)');
+    console.log('💾 Salvo em localStorage (fallback)');
     return true;
   } catch (e) {
     console.error('Falha total ao salvar:', e);
@@ -1742,7 +1742,7 @@ async function loadFromDB() {
       if (result) {
         Object.assign(state, result.state);
         if (result.challenges) challenges = result.challenges;
-        console.log(' Carregado do IndexedDB');
+        console.log('📂 Carregado do IndexedDB');
         return true;
       }
     } catch (e) {
@@ -1758,7 +1758,7 @@ async function loadFromDB() {
     if (savedState) {
       Object.assign(state, JSON.parse(savedState));
       if (savedChallenges) challenges = JSON.parse(savedChallenges);
-      console.log(' Carregado do localStorage (fallback)');
+      console.log('📂 Carregado do localStorage (fallback)');
       return true;
     }
   } catch (e) {
@@ -1779,7 +1779,7 @@ function migrateFromLocalStorage() {
       Object.assign(state, parsed);
       localStorage.removeItem('pactoState');
     } catch (e) {
-      console.error('Erro na migraço:', e);
+      console.error('Erro na migração:', e);
     }
   }
   
@@ -1788,13 +1788,13 @@ function migrateFromLocalStorage() {
       challenges = JSON.parse(savedChallenges);
       localStorage.removeItem('pactoChallenges');
     } catch (e) {
-      console.error('Erro na migraço de desafios:', e);
+      console.error('Erro na migração de desafios:', e);
     }
   }
 }
 
 // ==========================================
-// SINCRONIZAÇO ENTRE ABAS
+// SINCRONIZAÇÃO ENTRE ABAS
 // ==========================================
 
 function initBroadcastChannel() {
@@ -1832,7 +1832,7 @@ function undoLastAction() {
   Object.assign(state, previousState);
   
   updateUI();
-  showToast('Aço desfeita');
+  showToast('Ação desfeita');
   updateUndoButton();
   saveToDB();
 }
@@ -1847,7 +1847,7 @@ function redoLastAction() {
   Object.assign(state, nextState);
   
   updateUI();
-  showToast('Aço refeita');
+  showToast('Ação refeita');
   updateUndoButton();
   saveToDB();
 }
@@ -1911,7 +1911,7 @@ function updateUI() {
   cardM.className = 'player-card' + (!isFemale ? ' active-m' : '');
   cardM.setAttribute('aria-pressed', !isFemale);
   
-  // Seleço
+  // Seleção
   const btnF = document.getElementById('btnF');
   const btnM = document.getElementById('btnM');
   
@@ -1920,7 +1920,7 @@ function updateUI() {
   btnM.className = 'selector-btn' + (state.selected === 'M' ? ' active-m' : '');
   btnM.setAttribute('aria-pressed', state.selected === 'M');
   
-  // Boto spin
+  // Botão spin
   const canSpin = state.selected === state.current && !state.spinning && !state.awaitingConfirmation;
   const spinBtn = document.getElementById('spinBtn');
   spinBtn.disabled = !canSpin;
@@ -1929,7 +1929,7 @@ function updateUI() {
   const specialPending = state.points[state.current] >= state.nextSpecial[state.current];
   if (specialPending && state.current === 'F') {
     spinBtn.classList.add('special');
-    spinBtn.textContent = ' DESAFIO ESPECIAL ';
+    spinBtn.textContent = '⭐ DESAFIO ESPECIAL ⭐';
   } else {
     spinBtn.classList.remove('special');
     spinBtn.textContent = 'Girar Roda do Destino';
@@ -1954,7 +1954,7 @@ function selectPlayer(sex) {
 function setSelection(sex) {
   state.selected = sex;
   updateUI();
-  showToast('Seleço: ' + (sex === 'F' ? 'Soberana' : 'Submisso'));
+  showToast('Seleção: ' + (sex === 'F' ? 'Soberana' : 'Submisso'));
 }
 
 function togglePanel(id) {
@@ -1973,10 +1973,10 @@ function showToast(message, type = 'info') {
   toast.setAttribute('aria-live', 'polite');
   
   const icons = {
-    info: '',
-    success: '',
-    error: '',
-    warning: ''
+    info: 'ℹ️',
+    success: '✅',
+    error: '❌',
+    warning: '⚠️'
   };
   
   toast.innerHTML = `<span aria-hidden="true">${icons[type] || icons.info}</span> ${message}`;
@@ -2045,7 +2045,7 @@ async function spinWheel() {
   state.activeChallenge = chosen;
   state.played[poolKey].push(chosen.id);
   
-  // Animaço
+  // Animação
   state.spinning = true;
   updateUI();
   
@@ -2055,7 +2055,7 @@ async function spinWheel() {
   const angle = (5 + Math.random() * 3) * 360 + Math.random() * 360;
   wheel.style.transform = `rotate(${angle}deg) translateZ(0)`;
   
-  addHistory(`${state.current === 'F' ? '' : ''} ${state.isSpecial ? 'ESPECIAL: ' : ''}${chosen.title}`);
+  addHistory(`${state.current === 'F' ? '👑' : '⚔️'} ${state.isSpecial ? 'ESPECIAL: ' : ''}${chosen.title}`);
   
   await new Promise(r => setTimeout(r, 3500));
   
@@ -2068,7 +2068,7 @@ function showChallengeModal() {
   const ch = state.activeChallenge;
   const modal = document.getElementById('modalChallenge');
   
-  document.getElementById('chBadge').textContent = state.isSpecial ? ' ESPECIAL ' : 'NOVO DESAFIO';
+  document.getElementById('chBadge').textContent = state.isSpecial ? '⭐ ESPECIAL ⭐' : 'NOVO DESAFIO';
   document.getElementById('chBadge').className = 'modal-badge' + (state.isSpecial ? ' special' : '');
   document.getElementById('chTitle').textContent = ch.title;
   document.getElementById('chText').textContent = ch.text;
@@ -2096,7 +2096,7 @@ function declineChallenge() {
   state.money[opponent] += 10;
   state.points[state.current] = Math.max(0, state.points[state.current] - 3);
   
-  addHistory(` ${state.current === 'F' ? 'Soberana' : 'Submisso'} recusou  R$10 para ${opponent === 'F' ? 'Soberana' : 'Submisso'}`);
+  addHistory(`❌ ${state.current === 'F' ? 'Soberana' : 'Submisso'} recusou → R$10 para ${opponent === 'F' ? 'Soberana' : 'Submisso'}`);
   showToast(`Recusado: -R$10 transferidos`, 'warning');
   
   if (state.isSpecial && state.current === 'F') {
@@ -2115,9 +2115,9 @@ function startDoing() {
   const ch = state.activeChallenge;
   const modal = document.getElementById('modalDoing');
   
-  document.getElementById('doBadge').textContent = state.isSecret ? ' SEGREDO' : 'EM ANDAMENTO';
+  document.getElementById('doBadge').textContent = state.isSecret ? '🤫 SEGREDO' : 'EM ANDAMENTO';
   document.getElementById('doTitle').textContent = state.isSecret ? 'Modo Secreto' : ch.title;
-  document.getElementById('doText').textContent = state.isSecret ? 'O desafio está sendo executado em segredo. O oponente verá os detalhes na confirmaço.' : ch.text;
+  document.getElementById('doText').textContent = state.isSecret ? 'O desafio está sendo executado em segredo. O oponente verá os detalhes na confirmação.' : ch.text;
   
   const timerSection = document.getElementById('timerSection');
   const timerDisplay = document.getElementById('timerDisplay');
@@ -2143,7 +2143,7 @@ function startDoing() {
   }
   
   modal.classList.add('show');
-  addHistory(` ${state.isSecret ? '[SECRETO] ' : ''}${ch.title}`);
+  addHistory(`▶ ${state.isSecret ? '[SECRETO] ' : ''}${ch.title}`);
   hapticFeedback('success');
 }
 
@@ -2185,13 +2185,13 @@ function confirmResult(completed) {
   if (completed) {
     const pts = ch.pointsValue || 3;
     state.points[state.current] += pts;
-    addHistory(` Concluído: +${pts}pts`);
+    addHistory(`✅ Concluído: +${pts}pts`);
     showToast(`+${pts} Pontos de Glória!`, 'success');
     hapticFeedback('success');
   } else {
     state.money[state.current] = Math.max(0, state.money[state.current] - 20);
     state.points[state.current] = Math.max(0, state.points[state.current] - 3);
-    addHistory(` Falhou: -R$20, -3pts`);
+    addHistory(`❌ Falhou: -R$20, -3pts`);
     showToast('Penalidade aplicada: -R$20, -3pts', 'error');
     hapticFeedback('error');
   }
@@ -2227,14 +2227,14 @@ function checkVictory() {
       `Se recusado, o parceiro paga <strong>R$50</strong> de multa.`;
     
     document.getElementById('modalVictory').classList.add('show');
-    addHistory(` VITÓRIA DE ${name.toUpperCase()}! `);
+    addHistory(`🏆 VITÓRIA DE ${name.toUpperCase()}! 🏆`);
     hapticFeedback('success');
   }
 }
 
 function celebrateVictory() {
   closeModal('modalVictory');
-  showToast('Celebraço iniciada!', 'success');
+  showToast('Celebração iniciada!', 'success');
   hapticFeedback('success');
 }
 
@@ -2247,7 +2247,7 @@ function refuseVictory() {
   state.money[loser] = Math.max(0, state.money[loser] - 50);
   state.money[winner] += 50;
   
-  addHistory(` ${loser === 'F' ? 'Soberana' : 'Submisso'} recusou celebraço: R$50 para ${winner === 'F' ? 'Soberana' : 'Submisso'}`);
+  addHistory(`💰 ${loser === 'F' ? 'Soberana' : 'Submisso'} recusou celebração: R$50 para ${winner === 'F' ? 'Soberana' : 'Submisso'}`);
   showToast('Multa aplicada: R$50 transferidos', 'warning');
   
   closeModal('modalVictory');
@@ -2260,7 +2260,7 @@ function refuseVictory() {
 // EDITOR DE DESAFIOS (PROTEGIDO)
 // ==========================================
 
-// Hash simples (em produço, usar bcrypt ou similar)
+// Hash simples (em produção, usar bcrypt ou similar)
 function simpleHash(str) {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
@@ -2282,8 +2282,8 @@ function checkPassword() {
   const input = document.getElementById('pwdInput').value;
   const hash = simpleHash(input);
   
-  // Senha padro: "2024" (hash: 5c0c7f)
-  if (hash === '5c0c7f' || input === '1234') { // Fallback para senha antiga durante transiço
+  // Senha padrão: "2024" (hash: 5c0c7f)
+  if (hash === '5c0c7f' || input === '1234') { // Fallback para senha antiga durante transição
     closeModal('modalPassword');
     renderEdit();
     document.getElementById('modalEdit').classList.add('show');
@@ -2322,7 +2322,7 @@ function renderEdit() {
         <button onclick="deleteChallenge(${i})" class="btn btn-danger btn-small">Excluir</button>
       </div>
       <input type="text" class="editor-field" id="t-${i}" value="${escapeHtml(c.title)}" placeholder="Título do desafio">
-      <textarea class="editor-field editor-textarea" id="x-${i}" placeholder="Descriço do desafio">${escapeHtml(c.text)}</textarea>
+      <textarea class="editor-field editor-textarea" id="x-${i}" placeholder="Descrição do desafio">${escapeHtml(c.text)}</textarea>
       <div style="display:flex;gap:8px;">
         <input type="number" class="editor-field" id="p-${i}" value="${c.pointsValue || 3}" placeholder="Pontos" style="width:80px;">
         <input type="number" class="editor-field" id="m-${i}" value="${c.time || 0}" placeholder="Segundos" style="width:100px;">
@@ -2333,7 +2333,7 @@ function renderEdit() {
     </div>
   `).join('');
   
-  // Boto adicionar
+  // Botão adicionar
   const addBtn = document.createElement('button');
   addBtn.className = 'btn btn-primary';
   addBtn.style.marginTop = '8px';
@@ -2384,7 +2384,7 @@ async function saveEdits() {
   
   await saveToDB();
   closeEdit();
-  showToast('Alteraçes salvas com sucesso!', 'success');
+  showToast('Alterações salvas com sucesso!', 'success');
   hapticFeedback('success');
 }
 
@@ -2410,14 +2410,14 @@ async function importData() {
         throw new Error('Arquivo de backup inválido ou corrompido');
       }
       
-      const confirmMsg = ` IMPORTAR BACKUP\n\n` +
+      const confirmMsg = `📥 IMPORTAR BACKUP\n\n` +
         `Data: ${data.exportedAt ? new Date(data.exportedAt).toLocaleString('pt-BR') : 'Desconhecida'}\n` +
-        `Verso: ${data.version || '1.0'}\n\n` +
-        ` ATENÇO: Isso substituirá TODO o progresso atual!\n\n` +
+        `Versão: ${data.version || '1.0'}\n\n` +
+        `⚠️ ATENÇÃO: Isso substituirá TODO o progresso atual!\n\n` +
         `Deseja continuar?`;
       
       if (!confirm(confirmMsg)) {
-        showToast('Importaço cancelada', 'info');
+        showToast('Importação cancelada', 'info');
         return;
       }
       
@@ -2428,13 +2428,13 @@ async function importData() {
       renderHistory();
       updateUI();
       
-      showToast(' Backup importado com sucesso!', 'success');
+      showToast('✅ Backup importado com sucesso!', 'success');
       hapticFeedback('success');
-      addHistory(` Backup importado: ${file.name}`);
+      addHistory(`📥 Backup importado: ${file.name}`);
       
     } catch (err) {
       console.error('Erro:', err);
-      showToast(' Erro: ' + err.message, 'error');
+      showToast('❌ Erro: ' + err.message, 'error');
       hapticFeedback('error');
     }
     
@@ -2472,14 +2472,11 @@ function initServiceWorker() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./sw.js')
-        .then(reg => console.log(' App Pronto: Service Worker registrado!'))
-        .catch(err => console.log(' Erro ao registrar:', err));
+        .then(reg => console.log('✅ App Pronto: Service Worker registrado!'))
+        .catch(err => console.log('❌ Erro ao registrar:', err));
     });
   }
 }
-
-// Ativa a funço logo após ser criada
-initServiceWorker();
 
 
 
@@ -2503,7 +2500,7 @@ function initTouchGestures() {
     const deltaX = touchEndX - touchStartX;
     const deltaY = touchEndY - touchStartY;
     
-    // Swipe horizontal para trocar seleço
+    // Swipe horizontal para trocar seleção
     if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
       if (deltaX > 0 && state.selected === 'F') {
         setSelection('M');
@@ -2579,7 +2576,7 @@ function closeModal(id) {
 }
 
 function resetGame() {
-  if (!confirm(' REINICIAR TUDO?\n\nPontuaço, dinheiro e progresso sero ZERADOS permanentemente.\n\nOs desafios personalizados sero mantidos.\n\nDeseja continuar?')) return;
+  if (!confirm('⚠️ REINICIAR TUDO?\n\nPontuação, dinheiro e progresso serão ZERADOS permanentemente.\n\nOs desafios personalizados serão mantidos.\n\nDeseja continuar?')) return;
   
   saveStateForUndo();
   
@@ -2615,11 +2612,11 @@ function resetGame() {
 }
 
 // ==========================================
-// INICIALIZAÇO  PROVA DE FALHAS
+// INICIALIZAÇÃO À PROVA DE FALHAS
 // ==========================================
 
 async function init() {
-  console.log(' Iniciando O Pacto de Prazer...');
+  console.log('🎮 Iniciando O Pacto de Prazer...');
   
   // 1. IndexedDB com timeout e catch absoluto
   try {
@@ -2629,31 +2626,31 @@ async function init() {
     ]);
     
     if (dbResult) {
-      console.log(' Banco de dados OK');
+      console.log('✅ Banco de dados OK');
     } else {
-      console.log(' Modo sem persistncia (dados no sero salvos)');
+      console.log('ℹ️ Modo sem persistência (dados não serão salvos)');
     }
   } catch (e) {
-    console.warn(' IndexedDB falhou completamente:', e);
+    console.warn('⚠️ IndexedDB falhou completamente:', e);
     db = null;
   }
   
-  // 2. Tentar carregar dados (no crítico)
+  // 2. Tentar carregar dados (não crítico)
   try {
     if (db) await loadFromDB();
   } catch (e) {
-    console.warn(' Load falhou:', e);
+    console.warn('⚠️ Load falhou:', e);
   }
   
-  // 3. Migraço de dados antigos (no crítico)
+  // 3. Migração de dados antigos (não crítico)
   try {
     migrateFromLocalStorage();
   } catch (e) {
-    console.warn(' Migraço falhou:', e);
+    console.warn('⚠️ Migração falhou:', e);
   }
   
   // 4. Inicializar recursos visuais imediatamente (nunca bloqueia)
-  // Usar setTimeout para no travar o render
+  // Usar setTimeout para não travar o render
   setTimeout(() => {
     try { initBroadcastChannel(); } catch (e) {}
     try { initServiceWorker(); } catch (e) {}
@@ -2666,20 +2663,20 @@ async function init() {
   renderHistory();
   updateUI();
   
-  // 6. Se no conseguiu DB, mostrar aviso sutil
+  // 6. Se não conseguiu DB, mostrar aviso sutil
   if (!db) {
     setTimeout(() => {
-      showToast(' Modo temporário - dados no sero salvos', 'warning');
+      showToast('⚠️ Modo temporário - dados não serão salvos', 'warning');
     }, 1000);
   }
   
-  console.log(' Jogo iniciado!');
+  console.log('✅ Jogo iniciado!');
 }
 
 // Garantir que init nunca trave o DOM
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    // No usar await aqui para no bloquear
+    // Não usar await aqui para não bloquear
     init().catch(e => {
       console.error('Erro fatal:', e);
       // Mesmo com erro fatal, tenta mostrar algo
