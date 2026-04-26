@@ -1259,9 +1259,14 @@ Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas
     <div class="challenge-text" id="doText"></div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary" id="btnDone" onclick="completeChallenge()">
-      Concluir Desafio
-    </button>
+    <div class="btn-row">
+      <button class="btn btn-secondary" id="btnPausePlay" onclick="togglePause()">
+        ⏸️ Pausar
+      </button>
+      <button class="btn btn-primary" id="btnDone" onclick="completeChallenge()">
+        Concluir Desafio
+      </button>
+    </div>
   </div>
 </div>
 
@@ -1612,7 +1617,8 @@ let state = {
   timeLeft: 0,
   awaitingConfirmation: false,
   round: 1,
-  history: []
+  history: [],
+  isPaused: false
 };
 
 let challenges = JSON.parse(JSON.stringify(defaultChallenges));
@@ -2146,14 +2152,28 @@ function startDoing() {
 
   // Abre a tela de execução (modalDoing)
   setTimeout(() => {
-    openModal('modalDoing');
+    const modal = document.getElementById('modalDoing');
+    modal.classList.add('show');
+    addHistory(`▶ ${state.isSecret ? '[SECRETO] ' : ''}${ch.title}`);
+    hapticFeedback('success');
   }, 50);
 }
 
+function togglePause() {
+  state.isPaused = !state.isPaused;
+  const btn = document.getElementById('btnPausePlay');
   
-  modal.classList.add('show');
-  addHistory(`▶ ${state.isSecret ? '[SECRETO] ' : ''}${ch.title}`);
-  hapticFeedback('success');
+  if (state.isPaused) {
+    btn.textContent = '▶️ Retomar';
+    btn.classList.remove('btn-secondary');
+    btn.classList.add('btn-gold');
+    hapticFeedback('click');
+  } else {
+    btn.textContent = '⏸️ Pausar';
+    btn.classList.remove('btn-gold');
+    btn.classList.add('btn-secondary');
+    hapticFeedback('click');
+  }
 }
 
 function updateTimerDisplay() {
@@ -2597,7 +2617,8 @@ function resetGame() {
     timeLeft: 0,
     awaitingConfirmation: false,
     round: 1,
-    history: []
+    history: [],
+    isPaused: false
   };
   
   state.history.push({
