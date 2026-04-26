@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="theme-color" content="#0a0508">
 <meta name="description" content="O Pacto de Prazer - Jogo de desafios para casais">
-<title>O Pacto de Prazer — Edição Pro (Corrigido)</title>
+<title>O Pacto de Prazer — Edição Pro</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -31,6 +31,10 @@
     
     --male-primary: #4a90e2;
     --male-glow: rgba(74, 144, 226, 0.4);
+
+    --extreme-primary: #9b00ff;
+    --extreme-secondary: #d966ff;
+    --extreme-glow: rgba(155, 0, 255, 0.5);
     
     --text-primary: #ffffff;
     --text-secondary: #b8a9b8;
@@ -71,7 +75,6 @@
     padding-bottom: var(--safe-bottom);
   }
 
-  /* App Container */
   .app {
     height: 100vh;
     height: 100dvh;
@@ -82,7 +85,6 @@
     position: relative;
   }
 
-  /* Header */
   .header {
     padding: 12px 16px;
     text-align: center;
@@ -109,7 +111,6 @@
     margin-top: 2px;
   }
 
-  /* Game Area */
   .game-area {
     flex: 1;
     overflow-y: auto;
@@ -126,7 +127,6 @@
     display: none;
   }
 
-  /* Players Bar */
   .players-bar {
     display: flex;
     gap: 8px;
@@ -232,7 +232,6 @@
     letter-spacing: 0.1em;
   }
 
-  /* Turn Bar */
   .turn-bar {
     background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
     color: white;
@@ -267,7 +266,6 @@
     100% { left: 100%; }
   }
 
-  /* Wheel Section */
   .wheel-section {
     display: flex;
     flex-direction: column;
@@ -338,7 +336,6 @@
     z-index: 20;
   }
 
-  /* Action Section */
   .action-section {
     width: 100%;
   }
@@ -416,7 +413,6 @@
     50% { box-shadow: 0 4px 25px var(--gold-glow), 0 0 40px rgba(255,215,0,0.4); }
   }
 
-  /* Info Panels */
   .info-panels {
     display: flex;
     flex-direction: column;
@@ -482,7 +478,6 @@
     line-height: 1.6;
   }
 
-  /* Rules */
   .rule-item {
     padding: 10px 0;
     border-bottom: 1px solid var(--border-subtle);
@@ -518,7 +513,6 @@
     display: block;
   }
 
-  /* History */
   .history-list {
     max-height: 200px;
     overflow-y: auto;
@@ -543,7 +537,9 @@
     color: var(--text-secondary);
   }
 
-  /* Modals */
+  /* ==========================================
+     MODAIS
+  ========================================== */
   .modal {
     position: fixed;
     inset: 0;
@@ -588,6 +584,17 @@
 
   .modal-badge.secret {
     background: #9b59b6;
+  }
+
+  .modal-badge.extreme {
+    background: linear-gradient(135deg, var(--extreme-primary), var(--extreme-secondary));
+    color: white;
+    animation: pulse-extreme 1.5s infinite;
+  }
+
+  @keyframes pulse-extreme {
+    0%, 100% { box-shadow: 0 0 8px var(--extreme-glow); }
+    50% { box-shadow: 0 0 20px var(--extreme-glow), 0 0 40px rgba(155,0,255,0.3); }
   }
 
   .modal-title {
@@ -687,6 +694,25 @@
     font-weight: 700;
   }
 
+  .btn-extreme {
+    background: linear-gradient(135deg, var(--extreme-primary), var(--extreme-secondary));
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 4px 15px var(--extreme-glow);
+  }
+
+  .btn-extreme-f {
+    background: linear-gradient(135deg, #ff2a6d, #9b00ff);
+    color: white;
+    font-weight: 700;
+  }
+
+  .btn-extreme-m {
+    background: linear-gradient(135deg, #4a90e2, #9b00ff);
+    color: white;
+    font-weight: 700;
+  }
+
   .btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;
@@ -700,6 +726,131 @@
 
   .btn-row .btn {
     flex: 1;
+  }
+
+  /* ==========================================
+     EXTREME CHALLENGE STYLES
+  ========================================== */
+  .extreme-warning-box {
+    background: linear-gradient(135deg, rgba(155,0,255,0.15), rgba(255,42,109,0.1));
+    border: 2px solid var(--extreme-primary);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin: 12px 0;
+    text-align: center;
+  }
+
+  .extreme-warning-box .warning-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .extreme-warning-box .warning-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--extreme-secondary);
+    margin-bottom: 8px;
+  }
+
+  .extreme-warning-box .warning-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .extreme-choice-row {
+    display: flex;
+    gap: 10px;
+    margin: 12px 0;
+  }
+
+  .extreme-choice-btn {
+    flex: 1;
+    padding: 16px 10px;
+    border: 2px solid;
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+  }
+
+  .extreme-choice-btn.fem {
+    border-color: var(--accent-primary);
+  }
+
+  .extreme-choice-btn.fem:hover, .extreme-choice-btn.fem.selected {
+    background: rgba(255,42,109,0.2);
+    box-shadow: 0 0 15px var(--accent-glow);
+  }
+
+  .extreme-choice-btn.masc {
+    border-color: var(--male-primary);
+  }
+
+  .extreme-choice-btn.masc:hover, .extreme-choice-btn.masc.selected {
+    background: rgba(74,144,226,0.2);
+    box-shadow: 0 0 15px var(--male-glow);
+  }
+
+  .extreme-choice-btn .choice-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .extreme-choice-btn .choice-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .extreme-choice-btn.fem .choice-label {
+    color: var(--accent-primary);
+  }
+
+  .extreme-choice-btn.masc .choice-label {
+    color: var(--male-primary);
+  }
+
+  .extreme-choice-btn .choice-desc {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .extreme-rules-box {
+    background: rgba(155,0,255,0.08);
+    border: 1px solid rgba(155,0,255,0.3);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .extreme-rules-box strong {
+    color: var(--extreme-secondary);
+  }
+
+  .extreme-penalty-box {
+    background: rgba(231,76,60,0.1);
+    border: 1px solid rgba(231,76,60,0.4);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 0.78rem;
+    color: #ff9999;
+    line-height: 1.7;
+  }
+
+  .extreme-penalty-box strong {
+    color: #ff4444;
   }
 
   /* Undo Button */
@@ -873,19 +1024,21 @@
   .editor-tabs {
     display: flex;
     border-bottom: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
   }
 
   .editor-tab {
     flex: 1;
-    padding: 12px;
+    padding: 10px 6px;
     background: transparent;
     border: none;
     color: var(--text-secondary);
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 600;
     cursor: pointer;
     text-transform: uppercase;
     transition: all 0.2s;
+    min-width: 60px;
   }
 
   .editor-tab.active-f {
@@ -903,12 +1056,32 @@
     color: var(--bg-primary);
   }
 
+  .editor-tab.active-xf {
+    background: linear-gradient(135deg, #ff2a6d, #9b00ff);
+    color: white;
+  }
+
+  .editor-tab.active-xm {
+    background: linear-gradient(135deg, #4a90e2, #9b00ff);
+    color: white;
+  }
+
   .challenge-editor {
     background: var(--bg-glass);
     padding: 12px;
     border-radius: 8px;
     margin-bottom: 12px;
     border-left: 3px solid var(--accent-primary);
+  }
+
+  .challenge-editor.extreme-f {
+    border-left-color: var(--extreme-primary);
+    background: rgba(155,0,255,0.05);
+  }
+
+  .challenge-editor.extreme-m {
+    border-left-color: var(--male-primary);
+    background: rgba(74,144,226,0.05);
   }
 
   .editor-field {
@@ -957,25 +1130,20 @@
     border-width: 0;
   }
 
-  /* Focus styles for keyboard navigation */
   button:focus-visible,
   input:focus-visible {
     outline: 2px solid var(--accent-primary);
     outline-offset: 2px;
   }
 
-  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
   }
 
-  /* High contrast mode */
   @media (prefers-contrast: high) {
     :root {
       --text-secondary: #ffffff;
@@ -984,7 +1152,6 @@
     }
   }
 
-  /* Touch feedback */
   @media (hover: none) {
     .player-card:active,
     .selector-btn:active,
@@ -1005,7 +1172,6 @@
     color: var(--accent-primary);
   }
 
-  /* Animations */
   @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
@@ -1023,6 +1189,18 @@
 
   .pulse {
     animation: pulse 1.5s infinite;
+  }
+
+  /* Extreme glow on player card when at 20pts */
+  .player-card.extreme-ready {
+    border-color: var(--extreme-primary) !important;
+    box-shadow: 0 0 20px var(--extreme-glow) !important;
+    animation: pulse-extreme-card 1.5s infinite;
+  }
+
+  @keyframes pulse-extreme-card {
+    0%, 100% { box-shadow: 0 0 15px var(--extreme-glow); }
+    50% { box-shadow: 0 0 30px var(--extreme-glow), 0 0 50px rgba(155,0,255,0.2); }
   }
 </style>
 </head>
@@ -1150,8 +1328,7 @@
           <div class="panel-body">
             <div class="rule-item">
               <div class="rule-title">PACTO DE SANGUE</div>
-              ​A Engenharia do Prazer:
-Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas e profissionais do mercado erótico, utilizando técnicas de psicologia sensorial e mapeamento de zonas erógenas. Cada desafio foi arquitetado com as "artimanhas" exatas para expor os pontos mais vulneráveis de homens e mulheres, garantindo uma escalada de tensão e excitação sem precedentes.
+              A Engenharia do Prazer: Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas e profissionais do mercado erótico, utilizando técnicas de psicologia sensorial e mapeamento de zonas erógenas. Cada desafio foi arquitetado com as "artimanhas" exatas para expor os pontos mais vulneráveis de homens e mulheres, garantindo uma escalada de tensão e excitação sem precedentes.
             </div>
             <div class="rule-item">
               <div class="rule-title">SEGREDOS DOS DEUSES</div>
@@ -1177,9 +1354,9 @@ Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas
               <span class="rule-penalty">-R$10 e -3 pts (transferido ao oponente)</span>
             </div>
             <div class="rule-item">
-              <div class="rule-title">DESAFIO ESPECIAL</div>
-              ​"Este sistema possui um Protocolo Oculto: Desafio Especial. Ele foi desenvolvido por especialistas para ser o ápice do prazer e da submissão, com versões adaptadas para a anatomia masculina e feminina. No entanto, o código está bloqueado.
-​A Regra de Ouro: Apenas o primeiro jogador a atingir 20 Pontos terá a honra de desbloquear e ordenar a execução deste desafio. O vencedor assume o controlo total, e o perdedor terá de enfrentar a técnica mais avançada do jogo: o toque que retira todo o controlo do corpo."
+              <div class="rule-title">🔥 DESAFIO EXTREMO — 20 PONTOS</div>
+              Ao atingir 20 pontos, o jogador desbloqueia o Desafio Extremo. Ele pode aceitar ou recusar. Se aceitar, escolhe o tipo (Feminino ou Masculino). O desafio é EXTREMO e envolve atos masoquistas, sexo oral, anal e uso de brinquedos. Deve ser cumprido à risca — sem hesitação. O oponente confirma ao final. Recusar ou falhar implica em penalidade severa.
+              <span class="rule-penalty">FALHA/RECUSA: -R$30 e -5 pts</span>
             </div>
           </div>
         </div>
@@ -1225,7 +1402,9 @@ Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas
 <!-- Toast Container -->
 <div class="toast-container" id="toasts" role="region" aria-label="Notificações"></div>
 
-<!-- Modal: Challenge -->
+<!-- ==========================================
+     MODAL: Desafio Normal
+========================================== -->
 <div class="modal" id="modalChallenge" role="dialog" aria-modal="true" aria-labelledby="chTitle">
   <div class="modal-header">
     <span class="modal-badge" id="chBadge">NOVO DESAFIO</span>
@@ -1245,7 +1424,9 @@ Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas
   </div>
 </div>
 
-<!-- Modal: Executing -->
+<!-- ==========================================
+     MODAL: Executando Desafio
+========================================== -->
 <div class="modal" id="modalDoing" role="dialog" aria-modal="true" aria-labelledby="doTitle">
   <div class="modal-header">
     <span class="modal-badge secret" id="doBadge">EM ANDAMENTO</span>
@@ -1270,10 +1451,12 @@ Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas
   </div>
 </div>
 
-<!-- Modal: Confirmation -->
+<!-- ==========================================
+     MODAL: Confirmação do Oponente
+========================================== -->
 <div class="modal" id="modalConfirm" role="dialog" aria-modal="true" aria-labelledby="cfTitle">
   <div class="modal-header">
-    <span class="modal-badge">CONFIRMAÇÃO</span>
+    <span class="modal-badge" id="cfBadge">CONFIRMAÇÃO</span>
     <h2 class="modal-title" id="cfTitle">Oponente, confirme</h2>
   </div>
   <div class="modal-body">
@@ -1284,16 +1467,18 @@ Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-danger" onclick="confirmResult(false)">
+    <button class="btn btn-danger" id="cfFailBtn" onclick="confirmResult(false)">
       Não Concluiu (-R$20/-3pts)
     </button>
     <button class="btn btn-primary" onclick="confirmResult(true)">
-      Confirmo Conclusão
+      Confirmo Conclusão ✓
     </button>
   </div>
 </div>
 
-<!-- Modal: Victory -->
+<!-- ==========================================
+     MODAL: Vitória
+========================================== -->
 <div class="modal" id="modalVictory" role="dialog" aria-modal="true" aria-labelledby="victoryTitle">
   <div class="modal-header">
     <span class="modal-badge special">🏆 VITÓRIA</span>
@@ -1313,7 +1498,9 @@ Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas
   </div>
 </div>
 
-<!-- Modal: Password -->
+<!-- ==========================================
+     MODAL: Senha
+========================================== -->
 <div class="modal" id="modalPassword" role="dialog" aria-modal="true" aria-labelledby="pwdTitle">
   <div class="modal-header">
     <span class="modal-badge">🔒 SEGURANÇA</span>
@@ -1330,7 +1517,9 @@ Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas
   </div>
 </div>
 
-<!-- Modal: Editor -->
+<!-- ==========================================
+     MODAL: Editor de Desafios
+========================================== -->
 <div class="modal" id="modalEdit" role="dialog" aria-modal="true" aria-labelledby="editTitle">
   <div class="modal-header">
     <span class="modal-badge">⚔️ EDITOR</span>
@@ -1341,6 +1530,8 @@ Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas
       <button class="editor-tab active-f" onclick="switchEdit('F')" id="editF">Soberana</button>
       <button class="editor-tab" onclick="switchEdit('M')" id="editM">Submisso</button>
       <button class="editor-tab" onclick="switchEdit('S')" id="editS">Especial</button>
+      <button class="editor-tab" onclick="switchEdit('XF')" id="editXF">Extremo ♀</button>
+      <button class="editor-tab" onclick="switchEdit('XM')" id="editXM">Extremo ♂</button>
     </div>
     <div style="padding:12px;max-height:50vh;overflow-y:auto;" id="editContent">
       <!-- Dynamic content -->
@@ -1349,6 +1540,143 @@ Este sistema não é um passatempo comum. Ele foi desenvolvido por especialistas
   <div class="modal-footer">
     <button class="btn btn-secondary" onclick="closeEdit()">Cancelar</button>
     <button class="btn btn-primary" onclick="saveEdits()">Salvar Alterações</button>
+  </div>
+</div>
+
+<!-- ==========================================
+     MODAL: Desbloqueio do Desafio Extremo (20 pts)
+========================================== -->
+<div class="modal" id="modalExtremeUnlock" role="dialog" aria-modal="true" aria-labelledby="exUnlockTitle">
+  <div class="modal-header">
+    <span class="modal-badge extreme">🔥 DESAFIO EXTREMO 🔥</span>
+    <h2 class="modal-title" id="exUnlockTitle" style="color:var(--extreme-secondary);">Protocolo Oculto Ativado!</h2>
+  </div>
+  <div class="modal-body">
+    <div class="extreme-warning-box">
+      <span class="warning-icon">🏆</span>
+      <div class="warning-title">Parabéns! Você atingiu 20 pontos!</div>
+      <div class="warning-text">
+        Você desbloqueou o <strong>Desafio Extremo</strong> — o ápice do prazer e da submissão neste Pacto.<br><br>
+        Este desafio foi arquitetado para ser o limite máximo. Contém atos masoquistas, sexo oral, anal e uso de brinquedos.<br><br>
+        <strong>Você tem o direito de participar. Aceita o desafio?</strong>
+      </div>
+    </div>
+    <div class="extreme-rules-box">
+      <strong>⚠️ REGRAS DO DESAFIO EXTREMO:</strong><br>
+      • O desafio deve ser cumprido a risca — sem hesitação em nenhum ato<br>
+      • Não é permitido exitar ou pular qualquer parte<br>
+      • Ao final, o oponente confirma se foi concluído integralmente<br>
+      • Aceitar e não concluir é considerado falha grave
+    </div>
+    <div class="extreme-penalty-box">
+      <strong>PENALIDADE por recusa ou falha:</strong> -R$30 e -5 pontos
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-danger" onclick="declineExtremeChallenge()">
+      Recusar (-R$30 / -5pts)
+    </button>
+    <button class="btn btn-extreme" onclick="acceptExtremeChallenge()">
+      🔥 Aceitar o Desafio Extremo
+    </button>
+  </div>
+</div>
+
+<!-- ==========================================
+     MODAL: Escolha do Tipo de Desafio Extremo
+========================================== -->
+<div class="modal" id="modalExtremeChoice" role="dialog" aria-modal="true" aria-labelledby="exChoiceTitle">
+  <div class="modal-header">
+    <span class="modal-badge extreme">🔥 ESCOLHA O DESAFIO</span>
+    <h2 class="modal-title" id="exChoiceTitle" style="color:var(--extreme-secondary);">Selecione o Tipo</h2>
+  </div>
+  <div class="modal-body">
+    <p style="text-align:center;color:var(--text-secondary);margin-bottom:16px;font-size:0.85rem;">
+      Escolha qual tipo de desafio extremo será aplicado:
+    </p>
+    <div class="extreme-choice-row">
+      <div class="extreme-choice-btn fem" id="choiceFemBtn" onclick="selectExtremeType('XF')">
+        <span class="choice-icon">♀️</span>
+        <span class="choice-label">Feminino</span>
+        <span class="choice-desc">O homem realiza<br>nela</span>
+      </div>
+      <div class="extreme-choice-btn masc" id="choiceMascBtn" onclick="selectExtremeType('XM')">
+        <span class="choice-icon">♂️</span>
+        <span class="choice-label">Masculino</span>
+        <span class="choice-desc">Ela realiza<br>nele</span>
+      </div>
+    </div>
+    <div class="extreme-rules-box" style="margin-top:12px;">
+      <strong>Feminino:</strong> O homem executa o desafio na mulher.<br>
+      <strong>Masculino:</strong> A mulher executa o desafio no homem.
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary" onclick="backToExtremeUnlock()">← Voltar</button>
+    <button class="btn btn-extreme" id="btnConfirmExtremeChoice" onclick="confirmExtremeChoice()" disabled>
+      Confirmar Escolha →
+    </button>
+  </div>
+</div>
+
+<!-- ==========================================
+     MODAL: Desafio Extremo em Andamento
+========================================== -->
+<div class="modal" id="modalExtremeDoing" role="dialog" aria-modal="true" aria-labelledby="exDoTitle">
+  <div class="modal-header">
+    <span class="modal-badge extreme" id="exDoBadge">🔥 DESAFIO EXTREMO</span>
+    <h2 class="modal-title" id="exDoTitle" style="color:var(--extreme-secondary);">Título</h2>
+  </div>
+  <div class="modal-body">
+    <div class="timer-section" id="exTimerSection">
+      <div class="timer-display" id="exTimerDisplay" style="color:var(--extreme-secondary);text-shadow:0 0 20px var(--extreme-glow);">00:00</div>
+      <div class="timer-label">TEMPO RESTANTE</div>
+    </div>
+    <div class="challenge-text" id="exDoText"></div>
+    <div class="extreme-rules-box" style="margin-top:16px;">
+      <strong>⚠️ LEMBRE-SE:</strong> Nenhum ato pode ser pulado ou hesitado. Cumpra tudo a risca!
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="btn-row">
+      <button class="btn btn-secondary" id="exBtnPausePlay" onclick="toggleExtremeTimer()">
+        ⏸️ Pausar
+      </button>
+      <button class="btn btn-extreme" onclick="completeExtremeChallenge()">
+        ✓ Concluí o Desafio
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================
+     MODAL: Confirmação do Desafio Extremo
+========================================== -->
+<div class="modal" id="modalExtremeConfirm" role="dialog" aria-modal="true" aria-labelledby="exCfTitle">
+  <div class="modal-header">
+    <span class="modal-badge extreme">🔥 CONFIRMAÇÃO EXTREMA</span>
+    <h2 class="modal-title" id="exCfTitle">Oponente, confirme</h2>
+  </div>
+  <div class="modal-body">
+    <p style="color:var(--text-secondary);margin-bottom:12px;font-size:0.85rem;text-align:center;">
+      O desafio extremo foi concluído integralmente, sem hesitação em nenhum ato?
+    </p>
+    <div class="challenge-text" id="exCfText"></div>
+    <div class="extreme-rules-box" style="margin-top:16px;">
+      <strong>Recompensa por conclusão:</strong> <span id="exCfReward"></span><br>
+      <strong>Penalidade por falha:</strong> -R$30 e -5 pontos
+    </div>
+    <div class="extreme-penalty-box">
+      ⚠️ Confirme apenas se TODOS os atos foram realizados completamente, sem pular nenhuma etapa.
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-danger" onclick="confirmExtremeResult(false)">
+      ❌ Não Concluiu (-R$30/-5pts)
+    </button>
+    <button class="btn btn-extreme" onclick="confirmExtremeResult(true)">
+      ✅ Confirmo — Tudo Concluído!
+    </button>
   </div>
 </div>
 
@@ -1361,10 +1689,11 @@ const CONFIG = {
   WIN_POINTS: 50,
   START_MONEY: 0,
   SPECIAL_INTERVAL: 10,
+  EXTREME_THRESHOLD: 20,   // Pontos para desbloquear o Desafio Extremo
   DB_NAME: 'PactoDB',
   DB_VERSION: 1,
   STORE_NAME: 'gameState',
-  PASSWORD_HASH: '81dc9bdb52d04dc20036dbd8313ed055', // MD5 de '1234' (exemplo - substituir por hash real)
+  PASSWORD_HASH: '81dc9bdb52d04dc20036dbd8313ed055',
   MAX_HISTORY: 50,
   VIBRATION_ENABLED: true
 };
@@ -1394,7 +1723,7 @@ const defaultChallenges = {
     {
       id: "M3",
       title: "O Beijo do Gelo",
-      text: "Beije intensamente e ao mesmo tempo posicione só a cabecinha do seu pênis na entrada da vagina dela com pequena penetracao",
+      text: "Beije intensamente e ao mesmo tempo posicione só a cabecinha do seu pênis na entrada da vagina dela com pequena penetração",
       timed: true,
       time: 60,
       pointsValue: 3
@@ -1402,7 +1731,7 @@ const defaultChallenges = {
     {
       id: "M4",
       title: "O Dedo no Prazer",
-      text: "Use um ou dois dedos com lubrificante para massagear o Ponto G dela, de forma profunda e rítmica, você pode lamber os lábios ao mesmo tempo que enteodyz o dedo",
+      text: "Use um ou dois dedos com lubrificante para massagear o Ponto G dela, de forma profunda e rítmica, você pode lamber os lábios ao mesmo tempo que introduz o dedo",
       timed: true,
       pointsValue: 3,
       time: 120
@@ -1466,7 +1795,7 @@ const defaultChallenges = {
     {
       id: "M12",
       title: "O Orgasmo Garantido",
-      text: "Faça sexo oral combinando com massagem de ponto G, introduza o dedo e faca a alavanca no na vagina Observação: se ela gozar neste desafio, você perder 10 reais.",
+      text: "Faça sexo oral combinando com massagem de ponto G, introduza o dedo e faça a alavanca na vagina. Observação: se ela gozar neste desafio, você perde R$10.",
       timed: true,
       time: 120,
       pointsValue: 2
@@ -1595,6 +1924,50 @@ const defaultChallenges = {
       time: 360,
       pointsValue: 6
     }
+  ],
+
+  // ==========================================
+  // DESAFIOS EXTREMOS — FEMININO (o homem faz nela)
+  // ==========================================
+  XF: [
+    {
+      id: "XF1",
+      title: "O Domínio Total — Feminino",
+      text: "DESAFIO EXTREMO FEMININO — O homem executa nela:\n\n1. ORAL PROFUNDO E ANAL: Pratique sexo oral intenso nela enquanto estimula a região anal com os dedos ou um plug. Alterne sucção no clitóris com penetração da língua por 3 minutos.\n\n2. PENETRAÇÃO COM BRINQUEDO: Use um vibrador ou dildo com lubrificante para estimulá-la internamente. Você deve ditar o ritmo e a intensidade, garantindo que ela sinta cada movimento.\n\n3. DOMINÂNCIA MASOQUISTA: Com a mão livre, aplique palmadas nas nádegas dela. Ela deve estar em uma posição de submissão total enquanto você mantém o controle.\n\n4. CLÍMAX CONTROLADO EXTREMO: Leve-a ao limite máximo através de sexo oral ou brinquedos, mas pare exatamente antes do ápice. Ela deve implorar para continuar.\n\nTODOS os atos devem ser realizados integralmente. Nenhuma etapa pode ser pulada ou hesitada.",
+      timed: true,
+      time: 420,
+      pointsValue: 10
+    },
+    {
+      id: "XF2",
+      title: "A Rendição da Soberana",
+      text: "DESAFIO EXTREMO FEMININO — O homem executa nela:\n\n1. IMOBILIZAÇÃO: Ele a posiciona de bruços e mantém controle total dos movimentos dela por toda a duração do desafio.\n\n2. ORAL ANAL: Use a língua para estimular a região anal dela por 2 minutos, com movimentos circulares e pressão variada. Use lubrificante.\n\n3. DUPLO ESTÍMULO: Enquanto realiza o oral anal, use os dedos para estimular o clitóris simultaneamente. Mantenha por 3 minutos.\n\n4. PENETRAÇÃO DUPLA: Introduza um dedo no ânus com lubrificante enquanto penetra vaginalmente. Mantenha um ritmo constante e profundo, explorando os limites dela.\n\n5. CONFIRMAÇÃO FINAL: Ela deve declarar verbalmente que o desafio foi concluído integralmente e sem hesitação.\n\nNenhum ato pode ser omitido. A hesitação é considerada falha.",
+      timed: true,
+      time: 480,
+      pointsValue: 10
+    }
+  ],
+
+  // ==========================================
+  // DESAFIOS EXTREMOS — MASCULINO (ela faz nele)
+  // ==========================================
+  XM: [
+    {
+      id: "XM1",
+      title: "O Domínio Total — Masculino",
+      text: "DESAFIO EXTREMO MASCULINO — Ela executa nele:\n\n1. ORAL PROFUNDO E ANAL: Ela pratica sexo oral profundo enquanto massageia a região anal dele. Deve haver sucção forte e movimentos intensos por 3 minutos.\n\n2. ESTIMULAÇÃO DA PRÓSTATA: Ela introduz um dedo ou brinquedo no ânus dele para massagem prostática. Ela deve alternar a pressão para levá-lo ao limite do controle.\n\n3. DOMINAÇÃO MASOQUISTA: Ela utiliza brinquedos ou acessórios para causar leve desconforto seguido de prazer intenso. Ele deve aceitar cada comando sem questionar.\n\n4. O LIMITE DO PACTO: Ela o leva ao limite extremo da ejaculação. No momento crítico, ela para completamente e ordena que ele se mantenha imóvel, testando sua submissão total.\n\nTODOS os atos devem ser realizados integralmente. Nenhuma etapa pode ser pulada ou hesitada.",
+      timed: true,
+      time: 420,
+      pointsValue: 10
+    },
+    {
+      id: "XM2",
+      title: "A Rendição do Submisso",
+      text: "DESAFIO EXTREMO MASCULINO — Ela executa nele:\n\n1. IMOBILIZAÇÃO: Ela o posiciona de bruços e assume controle total dos movimentos dele por toda a duração do desafio.\n\n2. ORAL ANAL: Ela usa a língua para estimular a região anal dele por 2 minutos, com movimentos circulares e pressão variada. Use lubrificante.\n\n3. PENETRAÇÃO COM BRINQUEDO: Ela introduz um plug anal ou vibrador no ânus dele. Ela assume o controle total do ritmo, enquanto ele deve permanecer em silêncio absoluto.\n\n4. DUPLO CLÍMAX ANAL: Ela mantém a penetração anal com o brinquedo enquanto pratica sexo oral no pênis simultaneamente por 2 minutos, sem deixá-lo gozar.\n\n5. CONFIRMAÇÃO FINAL: Ele deve declarar verbalmente que o desafio foi concluído integralmente e sem hesitação.\n\nNenhum ato pode ser omitido. A hesitação é considerada falha.",
+      timed: true,
+      time: 480,
+      pointsValue: 10
+    }
   ]
 };
 
@@ -1608,11 +1981,14 @@ let state = {
   points: { F: 0, M: 0 },
   money: { F: CONFIG.START_MONEY, M: CONFIG.START_MONEY },
   nextSpecial: { F: CONFIG.SPECIAL_INTERVAL, M: 99999 },
-  played: { F: [], M: [], S: [] },
+  extremeUsed: { F: false, M: false },  // Controla se o extremo já foi acionado
+  played: { F: [], M: [], S: [], XF: [], XM: [] },
   spinning: false,
   activeChallenge: null,
   isSpecial: false,
   isSecret: false,
+  isExtreme: false,
+  extremeType: null,  // 'XF' ou 'XM'
   timer: null,
   timeLeft: 0,
   awaitingConfirmation: false,
@@ -1629,25 +2005,23 @@ let undoStack = [];
 let redoStack = [];
 
 // ==========================================
-// INDEXEDDB COM TIMEOUT - Anti-Trava
+// INDEXEDDB COM TIMEOUT
 // ==========================================
 
 async function initDB() {
   return new Promise((resolve, reject) => {
-    const TIMEOUT = 3000; // 3 segundos máximo
+    const TIMEOUT = 3000;
     let resolved = false;
     
-    // Timeout de segurança - se travar, resolve com null
     const timeoutId = setTimeout(() => {
       if (!resolved) {
         resolved = true;
         console.warn('⏱️ IndexedDB timeout - usando fallback');
         db = null;
-        resolve(null); // Não rejeita, resolve com null para continuar
+        resolve(null);
       }
     }, TIMEOUT);
     
-    // Tentar abrir IndexedDB
     let request;
     try {
       request = indexedDB.open(CONFIG.DB_NAME, CONFIG.DB_VERSION);
@@ -1655,7 +2029,6 @@ async function initDB() {
       clearTimeout(timeoutId);
       if (!resolved) {
         resolved = true;
-        console.warn('⚠️ Erro ao abrir IndexedDB:', e);
         db = null;
         resolve(null);
       }
@@ -1666,9 +2039,8 @@ async function initDB() {
       if (resolved) return;
       resolved = true;
       clearTimeout(timeoutId);
-      console.warn('❌ IndexedDB error:', request.error);
       db = null;
-      resolve(null); // Continua sem banco de dados
+      resolve(null);
     };
     
     request.onsuccess = () => {
@@ -1676,7 +2048,6 @@ async function initDB() {
       resolved = true;
       clearTimeout(timeoutId);
       db = request.result;
-      console.log('✅ IndexedDB conectado');
       resolve(db);
     };
     
@@ -1689,17 +2060,15 @@ async function initDB() {
     
     request.onblocked = () => {
       console.warn('⚠️ IndexedDB bloqueado');
-      // Não resolve aqui, deixa o timeout resolver
     };
   });
 }
 
 // ==========================================
-// SAVE/LOAD COM FALLBACK PARA localStorage
+// SAVE/LOAD
 // ==========================================
 
 async function saveToDB() {
-  // Tentar IndexedDB primeiro
   if (db) {
     try {
       const transaction = db.transaction([CONFIG.STORE_NAME], 'readwrite');
@@ -1721,12 +2090,10 @@ async function saveToDB() {
     }
   }
   
-  // Fallback para localStorage
   try {
     localStorage.setItem('pactoState', JSON.stringify(state));
     localStorage.setItem('pactoChallenges', JSON.stringify(challenges));
     localStorage.setItem('pactoTimestamp', Date.now().toString());
-    console.log('💾 Salvo em localStorage (fallback)');
     return true;
   } catch (e) {
     console.error('Falha total ao salvar:', e);
@@ -1735,7 +2102,6 @@ async function saveToDB() {
 }
 
 async function loadFromDB() {
-  // Tentar IndexedDB primeiro
   if (db) {
     try {
       const transaction = db.transaction([CONFIG.STORE_NAME], 'readonly');
@@ -1749,15 +2115,19 @@ async function loadFromDB() {
       if (result) {
         Object.assign(state, result.state);
         if (result.challenges) challenges = result.challenges;
-        console.log('📂 Carregado do IndexedDB');
+        // Garantir que os novos pools existam
+        if (!state.played.XF) state.played.XF = [];
+        if (!state.played.XM) state.played.XM = [];
+        if (!state.extremeUsed) state.extremeUsed = { F: false, M: false };
+        if (!challenges.XF) challenges.XF = JSON.parse(JSON.stringify(defaultChallenges.XF));
+        if (!challenges.XM) challenges.XM = JSON.parse(JSON.stringify(defaultChallenges.XM));
         return true;
       }
     } catch (e) {
-      console.warn('IndexedDB load falhou, tentando localStorage:', e);
+      console.warn('IndexedDB load falhou:', e);
     }
   }
   
-  // Fallback para localStorage
   try {
     const savedState = localStorage.getItem('pactoState');
     const savedChallenges = localStorage.getItem('pactoChallenges');
@@ -1765,7 +2135,11 @@ async function loadFromDB() {
     if (savedState) {
       Object.assign(state, JSON.parse(savedState));
       if (savedChallenges) challenges = JSON.parse(savedChallenges);
-      console.log('📂 Carregado do localStorage (fallback)');
+      if (!state.played.XF) state.played.XF = [];
+      if (!state.played.XM) state.played.XM = [];
+      if (!state.extremeUsed) state.extremeUsed = { F: false, M: false };
+      if (!challenges.XF) challenges.XF = JSON.parse(JSON.stringify(defaultChallenges.XF));
+      if (!challenges.XM) challenges.XM = JSON.parse(JSON.stringify(defaultChallenges.XM));
       return true;
     }
   } catch (e) {
@@ -1775,7 +2149,6 @@ async function loadFromDB() {
   return false;
 }
 
-// Fallback para localStorage (migration)
 function migrateFromLocalStorage() {
   const savedState = localStorage.getItem('pactoState');
   const savedChallenges = localStorage.getItem('pactoChallenges');
@@ -1818,7 +2191,7 @@ function initBroadcastChannel() {
 }
 
 // ==========================================
-// UNDO/REDO SYSTEM
+// UNDO/REDO
 // ==========================================
 
 function saveStateForUndo() {
@@ -1866,16 +2239,12 @@ function updateUndoButton() {
 }
 
 // ==========================================
-// VIBRATION FEEDBACK
+// VIBRAÇÃO
 // ==========================================
 
 function vibrate(pattern) {
   if (CONFIG.VIBRATION_ENABLED && 'vibrate' in navigator) {
-    try {
-      navigator.vibrate(pattern);
-    } catch (e) {
-      // Silently fail
-    }
+    try { navigator.vibrate(pattern); } catch (e) {}
   }
 }
 
@@ -1886,9 +2255,9 @@ function hapticFeedback(type) {
     error: [200, 100, 200],
     warning: [100, 100],
     click: 20,
-    heavy: 100
+    heavy: 100,
+    extreme: [100, 50, 100, 50, 200]
   };
-  
   vibrate(patterns[type] || 20);
 }
 
@@ -1897,28 +2266,28 @@ function hapticFeedback(type) {
 // ==========================================
 
 function updateUI() {
-  // Stats
   document.getElementById('pointsF').textContent = state.points.F;
   document.getElementById('pointsM').textContent = state.points.M;
   document.getElementById('moneyF').textContent = state.money.F;
   document.getElementById('moneyM').textContent = state.money.M;
   
-  // Turno
   const isFemale = state.current === 'F';
   const turnBar = document.getElementById('turnBar');
   turnBar.textContent = isFemale ? 'Vez da Soberana' : 'Vez do Submisso';
   turnBar.className = 'turn-bar' + (isFemale ? '' : ' male');
   
-  // Cards ativos
   const cardF = document.getElementById('cardF');
   const cardM = document.getElementById('cardM');
   
-  cardF.className = 'player-card' + (isFemale ? ' active-f' : '');
+  // Verificar se algum jogador tem 20+ pontos e não usou o extremo
+  const fExtremeReady = state.points.F >= CONFIG.EXTREME_THRESHOLD && !state.extremeUsed.F;
+  const mExtremeReady = state.points.M >= CONFIG.EXTREME_THRESHOLD && !state.extremeUsed.M;
+  
+  cardF.className = 'player-card' + (isFemale ? ' active-f' : '') + (fExtremeReady ? ' extreme-ready' : '');
   cardF.setAttribute('aria-pressed', isFemale);
-  cardM.className = 'player-card' + (!isFemale ? ' active-m' : '');
+  cardM.className = 'player-card' + (!isFemale ? ' active-m' : '') + (mExtremeReady ? ' extreme-ready' : '');
   cardM.setAttribute('aria-pressed', !isFemale);
   
-  // Seleção
   const btnF = document.getElementById('btnF');
   const btnM = document.getElementById('btnM');
   
@@ -1927,27 +2296,37 @@ function updateUI() {
   btnM.className = 'selector-btn' + (state.selected === 'M' ? ' active-m' : '');
   btnM.setAttribute('aria-pressed', state.selected === 'M');
   
-  // Botão spin
   const canSpin = state.selected === state.current && !state.spinning && !state.awaitingConfirmation;
   const spinBtn = document.getElementById('spinBtn');
   spinBtn.disabled = !canSpin;
   spinBtn.setAttribute('aria-disabled', !canSpin);
   
+  // Verificar se o jogador atual tem desafio extremo disponível
+  const currentExtremeReady = state.points[state.current] >= CONFIG.EXTREME_THRESHOLD && !state.extremeUsed[state.current];
+  
   const specialPending = state.points[state.current] >= state.nextSpecial[state.current];
-  if (specialPending && state.current === 'F') {
-    spinBtn.classList.add('special');
+  if (currentExtremeReady) {
+    spinBtn.className = 'spin-btn special';
+    spinBtn.style.background = 'linear-gradient(135deg, #9b00ff, #d966ff)';
+    spinBtn.style.boxShadow = '0 4px 20px rgba(155,0,255,0.6)';
+    spinBtn.textContent = '🔥 DESAFIO EXTREMO 🔥';
+  } else if (specialPending && state.current === 'F') {
+    spinBtn.className = 'spin-btn special';
+    spinBtn.style.background = '';
+    spinBtn.style.boxShadow = '';
     spinBtn.textContent = '⭐ DESAFIO ESPECIAL ⭐';
   } else {
-    spinBtn.classList.remove('special');
+    spinBtn.className = 'spin-btn';
+    spinBtn.style.background = '';
+    spinBtn.style.boxShadow = '';
     spinBtn.textContent = 'Girar Roda do Destino';
   }
   
-  // Status bar
   const nextSpec = state.nextSpecial[state.current] >= 99999 ? 'Único' : state.nextSpecial[state.current];
   document.getElementById('nextSpecial').textContent = nextSpec + ' pts';
   
   const pool = state.current === 'F' ? challenges.F : challenges.M;
-  const remaining = pool.length - state.played[state.current].length;
+  const remaining = pool.length - (state.played[state.current] || []).length;
   document.getElementById('remainingCh').textContent = remaining;
   document.getElementById('roundCount').textContent = state.round;
 }
@@ -1979,13 +2358,7 @@ function showToast(message, type = 'info') {
   toast.setAttribute('role', 'status');
   toast.setAttribute('aria-live', 'polite');
   
-  const icons = {
-    info: 'ℹ️',
-    success: '✅',
-    error: '❌',
-    warning: '⚠️'
-  };
-  
+  const icons = { info: 'ℹ️', success: '✅', error: '❌', warning: '⚠️' };
   toast.innerHTML = `<span aria-hidden="true">${icons[type] || icons.info}</span> ${message}`;
   container.appendChild(toast);
   
@@ -2029,6 +2402,15 @@ async function spinWheel() {
   
   saveStateForUndo();
   
+  // Verificar se o desafio extremo está disponível para o jogador atual
+  const extremeReady = state.points[state.current] >= CONFIG.EXTREME_THRESHOLD && !state.extremeUsed[state.current];
+  
+  if (extremeReady) {
+    // Acionar o fluxo do Desafio Extremo
+    showExtremeUnlockModal();
+    return;
+  }
+  
   state.isSpecial = state.points[state.current] >= state.nextSpecial[state.current];
   
   if (state.isSpecial && state.current === 'M') {
@@ -2052,7 +2434,6 @@ async function spinWheel() {
   state.activeChallenge = chosen;
   state.played[poolKey].push(chosen.id);
   
-  // Animação
   state.spinning = true;
   updateUI();
   
@@ -2117,23 +2498,24 @@ function declineChallenge() {
 }
 
 function startDoing() {
-  closeModal('modalChallenge'); // Fecha a janela de sorteio
+  closeModal('modalChallenge');
 
   const ch = state.activeChallenge;
   if (!ch) return;
 
-  // Limpa o cronômetro antigo para o celular não engasgar
   if (state.timer) {
     clearInterval(state.timer);
     state.timer = null;
   }
 
-  // Preenche os textos na tela
   document.getElementById('doTitle').innerText = ch.title;
   document.getElementById('doText').innerHTML = ch.text;
+  document.getElementById('doBadge').textContent = state.isSpecial ? '⭐ ESPECIAL' : 'EM ANDAMENTO';
+  document.getElementById('doBadge').className = 'modal-badge' + (state.isSpecial ? ' special' : ' secret');
 
-  // Configura o tempo se o desafio tiver segundos
+  const timerSection = document.getElementById('timerSection');
   if (ch.time && ch.time > 0) {
+    timerSection.style.display = 'block';
     state.timeLeft = ch.time;
     updateTimerDisplay();
 
@@ -2148,9 +2530,10 @@ function startDoing() {
         }
       }
     }, 1000);
+  } else {
+    timerSection.style.display = 'none';
   }
 
-  // Abre a tela de execução (modalDoing)
   setTimeout(() => {
     const modal = document.getElementById('modalDoing');
     modal.classList.add('show');
@@ -2167,13 +2550,12 @@ function togglePause() {
     btn.textContent = '▶️ Retomar';
     btn.classList.remove('btn-secondary');
     btn.classList.add('btn-gold');
-    hapticFeedback('click');
   } else {
     btn.textContent = '⏸️ Pausar';
     btn.classList.remove('btn-gold');
     btn.classList.add('btn-secondary');
-    hapticFeedback('click');
   }
+  hapticFeedback('click');
 }
 
 function updateTimerDisplay() {
@@ -2196,9 +2578,13 @@ function completeChallenge() {
 function showConfirmModal() {
   const ch = state.activeChallenge;
   
+  document.getElementById('cfBadge').textContent = 'CONFIRMAÇÃO';
+  document.getElementById('cfBadge').className = 'modal-badge';
+  document.getElementById('cfTitle').textContent = 'Oponente, confirme';
   document.getElementById('cfText').innerHTML = 
     `<strong style="color:var(--accent-secondary);display:block;margin-bottom:8px;">${ch.title}</strong>${ch.text}`;
   document.getElementById('cfReward').textContent = `+${ch.pointsValue || 3} pontos`;
+  document.getElementById('cfFailBtn').textContent = 'Não Concluiu (-R$20/-3pts)';
   
   document.getElementById('modalConfirm').classList.add('show');
   state.awaitingConfirmation = true;
@@ -2234,6 +2620,7 @@ function confirmResult(completed) {
   nextTurn();
   saveToDB();
   checkVictory();
+  checkExtremeThreshold();
 }
 
 function nextTurn() {
@@ -2241,6 +2628,8 @@ function nextTurn() {
   state.activeChallenge = null;
   state.isSpecial = false;
   state.isSecret = false;
+  state.isExtreme = false;
+  state.extremeType = null;
   state.round++;
   updateUI();
 }
@@ -2259,6 +2648,16 @@ function checkVictory() {
     addHistory(`🏆 VITÓRIA DE ${name.toUpperCase()}! 🏆`);
     hapticFeedback('success');
   }
+}
+
+// Verifica se algum jogador acabou de atingir 20 pontos (notificação discreta)
+function checkExtremeThreshold() {
+  ['F', 'M'].forEach(player => {
+    if (state.points[player] >= CONFIG.EXTREME_THRESHOLD && !state.extremeUsed[player]) {
+      const name = player === 'F' ? 'Soberana' : 'Submisso';
+      showToast(`🔥 ${name} atingiu 20 pts! Desafio Extremo disponível!`, 'warning');
+    }
+  });
 }
 
 function celebrateVictory() {
@@ -2286,10 +2685,221 @@ function refuseVictory() {
 }
 
 // ==========================================
+// SISTEMA DE DESAFIO EXTREMO (20 PONTOS)
+// ==========================================
+
+function showExtremeUnlockModal() {
+  const playerName = state.current === 'F' ? 'Soberana' : 'Submisso';
+  document.getElementById('exUnlockTitle').textContent = `Parabéns, ${playerName}!`;
+  document.getElementById('modalExtremeUnlock').classList.add('show');
+  hapticFeedback('extreme');
+  addHistory(`🔥 ${playerName} desbloqueou o DESAFIO EXTREMO!`);
+}
+
+function declineExtremeChallenge() {
+  saveStateForUndo();
+  
+  const opponent = state.current === 'F' ? 'M' : 'F';
+  
+  state.money[state.current] = Math.max(0, state.money[state.current] - 30);
+  state.money[opponent] += 30;
+  state.points[state.current] = Math.max(0, state.points[state.current] - 5);
+  state.extremeUsed[state.current] = true; // Marca como usado (recusado)
+  
+  const playerName = state.current === 'F' ? 'Soberana' : 'Submisso';
+  addHistory(`❌ ${playerName} RECUSOU o Desafio Extremo → -R$30, -5pts`);
+  showToast(`Desafio Extremo recusado: -R$30, -5pts`, 'error');
+  
+  closeModal('modalExtremeUnlock');
+  nextTurn();
+  saveToDB();
+  hapticFeedback('error');
+}
+
+function acceptExtremeChallenge() {
+  closeModal('modalExtremeUnlock');
+  
+  // Resetar seleção de tipo
+  state.extremeType = null;
+  document.getElementById('choiceFemBtn').classList.remove('selected');
+  document.getElementById('choiceMascBtn').classList.remove('selected');
+  document.getElementById('btnConfirmExtremeChoice').disabled = true;
+  
+  document.getElementById('modalExtremeChoice').classList.add('show');
+  hapticFeedback('heavy');
+}
+
+function selectExtremeType(type) {
+  state.extremeType = type;
+  
+  document.getElementById('choiceFemBtn').classList.toggle('selected', type === 'XF');
+  document.getElementById('choiceMascBtn').classList.toggle('selected', type === 'XM');
+  document.getElementById('btnConfirmExtremeChoice').disabled = false;
+  
+  hapticFeedback('click');
+}
+
+function backToExtremeUnlock() {
+  closeModal('modalExtremeChoice');
+  document.getElementById('modalExtremeUnlock').classList.add('show');
+}
+
+function confirmExtremeChoice() {
+  if (!state.extremeType) return;
+  
+  closeModal('modalExtremeChoice');
+  
+  // Sortear desafio do pool escolhido
+  const poolKey = state.extremeType;
+  const fullPool = challenges[poolKey];
+  
+  if (!fullPool || fullPool.length === 0) {
+    showToast('Nenhum desafio extremo configurado!', 'error');
+    return;
+  }
+  
+  let available = fullPool.filter(c => !(state.played[poolKey] || []).includes(c.id));
+  
+  if (available.length === 0) {
+    state.played[poolKey] = [];
+    available = fullPool;
+  }
+  
+  const chosen = available[Math.floor(Math.random() * available.length)];
+  state.activeChallenge = chosen;
+  state.isExtreme = true;
+  
+  if (!state.played[poolKey]) state.played[poolKey] = [];
+  state.played[poolKey].push(chosen.id);
+  
+  startExtremeDoing(chosen);
+}
+
+function startExtremeDoing(ch) {
+  if (state.timer) {
+    clearInterval(state.timer);
+    state.timer = null;
+  }
+  
+  const typeLabel = state.extremeType === 'XF' ? '♀ FEMININO' : '♂ MASCULINO';
+  document.getElementById('exDoBadge').textContent = `🔥 EXTREMO ${typeLabel}`;
+  document.getElementById('exDoTitle').textContent = ch.title;
+  document.getElementById('exDoText').innerHTML = ch.text.replace(/\n/g, '<br>');
+  
+  const exTimerSection = document.getElementById('exTimerSection');
+  if (ch.time && ch.time > 0) {
+    exTimerSection.style.display = 'block';
+    state.timeLeft = ch.time;
+    updateExtremeTimerDisplay();
+    
+    state.timer = setInterval(() => {
+      if (!state.isPaused) {
+        state.timeLeft--;
+        updateExtremeTimerDisplay();
+        if (state.timeLeft <= 0) {
+          clearInterval(state.timer);
+          state.timer = null;
+          completeExtremeChallenge();
+        }
+      }
+    }, 1000);
+  } else {
+    exTimerSection.style.display = 'none';
+  }
+  
+  const typeText = state.extremeType === 'XF' ? 'Extremo Feminino' : 'Extremo Masculino';
+  addHistory(`🔥 EXTREMO [${typeText}]: ${ch.title}`);
+  
+  setTimeout(() => {
+    document.getElementById('modalExtremeDoing').classList.add('show');
+    hapticFeedback('extreme');
+  }, 50);
+}
+
+function updateExtremeTimerDisplay() {
+  const m = Math.floor(state.timeLeft / 60);
+  const s = state.timeLeft % 60;
+  document.getElementById('exTimerDisplay').textContent = 
+    `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+}
+
+function toggleExtremeTimer() {
+  state.isPaused = !state.isPaused;
+  const btn = document.getElementById('exBtnPausePlay');
+  
+  if (state.isPaused) {
+    btn.textContent = '▶️ Retomar';
+    btn.classList.remove('btn-secondary');
+    btn.classList.add('btn-gold');
+  } else {
+    btn.textContent = '⏸️ Pausar';
+    btn.classList.remove('btn-gold');
+    btn.classList.add('btn-secondary');
+  }
+  hapticFeedback('click');
+}
+
+function completeExtremeChallenge() {
+  if (state.timer) {
+    clearInterval(state.timer);
+    state.timer = null;
+  }
+  
+  closeModal('modalExtremeDoing');
+  showExtremeConfirmModal();
+}
+
+function showExtremeConfirmModal() {
+  const ch = state.activeChallenge;
+  const typeLabel = state.extremeType === 'XF' ? 'Feminino' : 'Masculino';
+  
+  document.getElementById('exCfTitle').textContent = `Oponente, confirme — Extremo ${typeLabel}`;
+  document.getElementById('exCfText').innerHTML = 
+    `<strong style="color:var(--extreme-secondary);display:block;margin-bottom:8px;">${ch.title}</strong>${ch.text.replace(/\n/g, '<br>')}`;
+  document.getElementById('exCfReward').textContent = `+${ch.pointsValue || 10} pontos`;
+  
+  document.getElementById('modalExtremeConfirm').classList.add('show');
+  state.awaitingConfirmation = true;
+  updateUI();
+}
+
+function confirmExtremeResult(completed) {
+  saveStateForUndo();
+  
+  const ch = state.activeChallenge;
+  const opponent = state.current === 'F' ? 'M' : 'F';
+  const playerName = state.current === 'F' ? 'Soberana' : 'Submisso';
+  
+  state.extremeUsed[state.current] = true; // Marca como usado
+  
+  if (completed) {
+    const pts = ch.pointsValue || 10;
+    state.points[state.current] += pts;
+    addHistory(`🔥✅ EXTREMO CONCLUÍDO por ${playerName}: +${pts}pts`);
+    showToast(`🔥 Desafio Extremo concluído! +${pts} pontos!`, 'success');
+    hapticFeedback('extreme');
+  } else {
+    state.money[state.current] = Math.max(0, state.money[state.current] - 30);
+    state.money[opponent] += 30;
+    state.points[state.current] = Math.max(0, state.points[state.current] - 5);
+    addHistory(`🔥❌ EXTREMO FALHOU por ${playerName}: -R$30, -5pts`);
+    showToast('Falha no Extremo: -R$30, -5pts', 'error');
+    hapticFeedback('error');
+  }
+  
+  closeModal('modalExtremeConfirm');
+  state.awaitingConfirmation = false;
+  state.isExtreme = false;
+  state.extremeType = null;
+  nextTurn();
+  saveToDB();
+  checkVictory();
+}
+
+// ==========================================
 // EDITOR DE DESAFIOS (PROTEGIDO)
 // ==========================================
 
-// Hash simples (em produção, usar bcrypt ou similar)
 function simpleHash(str) {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
@@ -2311,8 +2921,7 @@ function checkPassword() {
   const input = document.getElementById('pwdInput').value;
   const hash = simpleHash(input);
   
-  // Senha padrão: "2024" (hash: 5c0c7f)
-  if (hash === '5c0c7f' || input === '1234') { // Fallback para senha antiga durante transição
+  if (hash === '5c0c7f' || input === '1234') {
     closeModal('modalPassword');
     renderEdit();
     document.getElementById('modalEdit').classList.add('show');
@@ -2340,14 +2949,19 @@ function renderEdit() {
   document.getElementById('editF').className = 'editor-tab' + (editPool === 'F' ? ' active-f' : '');
   document.getElementById('editM').className = 'editor-tab' + (editPool === 'M' ? ' active-m' : '');
   document.getElementById('editS').className = 'editor-tab' + (editPool === 'S' ? ' active-s' : '');
+  document.getElementById('editXF').className = 'editor-tab' + (editPool === 'XF' ? ' active-xf' : '');
+  document.getElementById('editXM').className = 'editor-tab' + (editPool === 'XM' ? ' active-xm' : '');
   
   const pool = challenges[editPool];
   const container = document.getElementById('editContent');
   
+  const isExtreme = editPool === 'XF' || editPool === 'XM';
+  const editorClass = isExtreme ? (editPool === 'XF' ? 'challenge-editor extreme-f' : 'challenge-editor extreme-m') : 'challenge-editor';
+  
   container.innerHTML = pool.map((c, i) => `
-    <div class="challenge-editor">
+    <div class="${editorClass}">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <strong style="font-size:0.8rem;color:var(--accent-secondary);">${c.id}</strong>
+        <strong style="font-size:0.8rem;color:${isExtreme ? 'var(--extreme-secondary)' : 'var(--accent-secondary)'};">${c.id}</strong>
         <button onclick="deleteChallenge(${i})" class="btn btn-danger btn-small">Excluir</button>
       </div>
       <input type="text" class="editor-field" id="t-${i}" value="${escapeHtml(c.title)}" placeholder="Título do desafio">
@@ -2362,7 +2976,6 @@ function renderEdit() {
     </div>
   `).join('');
   
-  // Botão adicionar
   const addBtn = document.createElement('button');
   addBtn.className = 'btn btn-primary';
   addBtn.style.marginTop = '8px';
@@ -2386,7 +2999,7 @@ function addChallenge() {
     text: 'Descreva o desafio detalhadamente...',
     timed: false,
     time: 0,
-    pointsValue: 3
+    pointsValue: editPool.startsWith('X') ? 10 : 3
   });
   renderEdit();
   hapticFeedback('click');
@@ -2453,6 +3066,11 @@ async function importData() {
       saveStateForUndo();
       Object.assign(state, data.state);
       Object.assign(challenges, data.challenges);
+      if (!state.played.XF) state.played.XF = [];
+      if (!state.played.XM) state.played.XM = [];
+      if (!state.extremeUsed) state.extremeUsed = { F: false, M: false };
+      if (!challenges.XF) challenges.XF = JSON.parse(JSON.stringify(defaultChallenges.XF));
+      if (!challenges.XM) challenges.XM = JSON.parse(JSON.stringify(defaultChallenges.XM));
       await saveToDB();
       renderHistory();
       updateUI();
@@ -2479,7 +3097,7 @@ function exportData() {
     state: state,
     challenges: challenges,
     exportedAt: new Date().toISOString(),
-    version: '2.0'
+    version: '3.0'
   };
   
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -2494,11 +3112,10 @@ function exportData() {
 }
 
 // ==========================================
-// SERVICE WORKER (DESATIVADO)
+// SERVICE WORKER
 // ==========================================
 
 function initServiceWorker() {
-  // Service Worker desativado para evitar tela branca
   console.log('ℹ️ Service Worker desativado para compatibilidade');
 }
 
@@ -2522,7 +3139,6 @@ function initTouchGestures() {
     const deltaX = touchEndX - touchStartX;
     const deltaY = touchEndY - touchStartY;
     
-    // Swipe horizontal para trocar seleção
     if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
       if (deltaX > 0 && state.selected === 'F') {
         setSelection('M');
@@ -2560,29 +3176,25 @@ function initOfflineDetection() {
 
 function initKeyboardNavigation() {
   document.addEventListener('keydown', e => {
-    // ESC fecha modais
     if (e.key === 'Escape') {
       const modals = document.querySelectorAll('.modal.show');
       modals.forEach(modal => modal.classList.remove('show'));
     }
     
-    // Ctrl+Z para undo
     if (e.ctrlKey && e.key === 'z') {
       e.preventDefault();
       undoLastAction();
     }
     
-    // Ctrl+Y para redo
     if (e.ctrlKey && e.key === 'y') {
       e.preventDefault();
       redoLastAction();
     }
     
-    // Espaço para girar (quando permitido)
     if (e.code === 'Space' && !e.target.matches('input, textarea')) {
       e.preventDefault();
       const spinBtn = document.getElementById('spinBtn');
-      if (!spinBtn.disabled && !spinBtn.classList.contains('special')) {
+      if (!spinBtn.disabled) {
         spinWheel();
       }
     }
@@ -2608,11 +3220,14 @@ function resetGame() {
     points: { F: 0, M: 0 },
     money: { F: CONFIG.START_MONEY, M: CONFIG.START_MONEY },
     nextSpecial: { F: CONFIG.SPECIAL_INTERVAL, M: 99999 },
-    played: { F: [], M: [], S: [] },
+    extremeUsed: { F: false, M: false },
+    played: { F: [], M: [], S: [], XF: [], XM: [] },
     spinning: false,
     activeChallenge: null,
     isSpecial: false,
     isSecret: false,
+    isExtreme: false,
+    extremeType: null,
     timer: null,
     timeLeft: 0,
     awaitingConfirmation: false,
@@ -2635,45 +3250,47 @@ function resetGame() {
 }
 
 // ==========================================
-// INICIALIZAÇÃO À PROVA DE FALHAS
+// INICIALIZAÇÃO
 // ==========================================
 
 async function init() {
-  console.log('🎮 Iniciando O Pacto de Prazer...');
+  console.log('🎮 Iniciando O Pacto de Prazer v3...');
   
-  // 1. IndexedDB com timeout e catch absoluto
   try {
     const dbResult = await Promise.race([
       initDB(),
-      new Promise(resolve => setTimeout(() => resolve(null), 5000)) // Fallback 5s
+      new Promise(resolve => setTimeout(() => resolve(null), 5000))
     ]);
     
     if (dbResult) {
       console.log('✅ Banco de dados OK');
     } else {
-      console.log('ℹ️ Modo sem persistência (dados não serão salvos)');
+      console.log('ℹ️ Modo sem persistência');
     }
   } catch (e) {
-    console.warn('⚠️ IndexedDB falhou completamente:', e);
+    console.warn('⚠️ IndexedDB falhou:', e);
     db = null;
   }
   
-  // 2. Tentar carregar dados (não crítico)
   try {
     if (db) await loadFromDB();
   } catch (e) {
     console.warn('⚠️ Load falhou:', e);
   }
   
-  // 3. Migração de dados antigos (não crítico)
   try {
     migrateFromLocalStorage();
   } catch (e) {
     console.warn('⚠️ Migração falhou:', e);
   }
   
-  // 4. Inicializar recursos visuais imediatamente (nunca bloqueia)
-  // Usar setTimeout para não travar o render
+  // Garantir que os pools extremos existam
+  if (!challenges.XF) challenges.XF = JSON.parse(JSON.stringify(defaultChallenges.XF));
+  if (!challenges.XM) challenges.XM = JSON.parse(JSON.stringify(defaultChallenges.XM));
+  if (!state.played.XF) state.played.XF = [];
+  if (!state.played.XM) state.played.XM = [];
+  if (!state.extremeUsed) state.extremeUsed = { F: false, M: false };
+  
   setTimeout(() => {
     try { initBroadcastChannel(); } catch (e) {}
     try { initServiceWorker(); } catch (e) {}
@@ -2682,11 +3299,9 @@ async function init() {
     try { initKeyboardNavigation(); } catch (e) {}
   }, 0);
   
-  // 5. Renderizar UI IMEDIATAMENTE (mais importante!)
   renderHistory();
   updateUI();
   
-  // 6. Se não conseguiu DB, mostrar aviso sutil
   if (!db) {
     setTimeout(() => {
       showToast('⚠️ Modo temporário - dados não serão salvos', 'warning');
@@ -2696,13 +3311,10 @@ async function init() {
   console.log('✅ Jogo iniciado!');
 }
 
-// Garantir que init nunca trave o DOM
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    // Não usar await aqui para não bloquear
     init().catch(e => {
       console.error('Erro fatal:', e);
-      // Mesmo com erro fatal, tenta mostrar algo
       document.body.innerHTML = `
         <div style="padding: 40px; text-align: center; color: #ff2a6d;">
           <h1>Erro ao carregar</h1>
@@ -2719,26 +3331,16 @@ if (document.readyState === 'loading') {
     console.error('Erro fatal:', e);
   });
 }
-  
-  // COLE AQUI NO FINAL DO ARQUIVO
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js').then(reg => {
-        console.log('PWA carregado!');
-      });
-    });
-  }
-</script> ```
 
-**Resumo para não esquecer:**
-* **O primeiro:** Embaixo de `<head>`.
-* **O segundo:** No lugar da função `startDoing` antiga.
-* **O terceiro:** Logo antes do último `</script>` do arquivo.
-
-Se você tiver dificuldade em achar a função `startDoing`, me diga qual o nome da função que aparece quando você clica no botão "ACEITAR" no seu jogo, que eu te oriento!
-
-// Prevenir zoom em inputs no iOS
 document.addEventListener('gesturestart', e => e.preventDefault());
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').then(reg => {
+      console.log('PWA carregado!');
+    }).catch(() => {});
+  });
+}
 </script>
 
 </body>
